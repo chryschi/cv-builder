@@ -3,15 +3,18 @@ import PersonalInfo from "./components/form/PersonalInfo";
 import { useState } from "react";
 import Education from "./components/form/EducationalExp";
 import Career from "./components/form/PracticalExp";
-import Skill from "./components/form/Skills";
+import Skills from "./components/form/Skills";
 import PersonalInfoCV from "./components/cv/PersonalInfoCV";
 import CareerInfoCV from "./components/cv/CareerInfoCV";
 import EducationInfoCV from "./components/cv/EducationInfoCV";
 import SkillsCV from "./components/cv/SkillsCV";
+import Projects from "./components/form/Projects";
+import ProjectsCV from "./components/cv/ProjectsCV";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
   const [educationInfo, setEducationInfo] = useState([]);
+  const [projectsInfo, setProjectsInfo] = useState([]);
   const [careerInfo, setCareerInfo] = useState([]);
   const [skillInfo, setSkillInfo] = useState([]);
 
@@ -33,8 +36,14 @@ function App() {
     newCareerInfo.push(newInfo);
     setCareerInfo(newCareerInfo);
   };
+  const updateProjects = (event) => {
+    const newInfo = createInfoObject(event);
+    const newProjectsInfo = [...projectsInfo];
+    newProjectsInfo.push(newInfo);
+    setProjectsInfo(newProjectsInfo);
+  };
 
-  const updateSkill = (event) => {
+  const updateSkills = (event) => {
     const newInfo = createInfoObject(event);
     const newSkillInfo = [...skillInfo];
     newSkillInfo.push(newInfo);
@@ -62,7 +71,8 @@ function App() {
           <PersonalInfo infoHandler={updatePersonalInfo} />
           <Education infoHandler={updateEducation} info={educationInfo} />
           <Career infoHandler={updateCareer} info={careerInfo} />
-          <Skill infoHandler={updateSkill} info={skillInfo} />
+          <Projects infoHandler={updateProjects} info={projectsInfo} />
+          <Skills infoHandler={updateSkills} info={skillInfo} />
         </div>
       </div>
       <div className="cv">
@@ -73,6 +83,7 @@ function App() {
         <PersonalInfoCV info={personalInfo} />
         <EducationInfoCV info={educationInfo} />
         <CareerInfoCV info={careerInfo} />
+        <ProjectsCV info={projectsInfo} />
         <SkillsCV info={skillInfo} />
       </div>
     </>

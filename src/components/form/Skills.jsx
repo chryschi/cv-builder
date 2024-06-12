@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const Skill = (props) => {
+const Skills = (props) => {
   const [dropped, setDropped] = useState(false);
   const [createSkill, setCreateSkill] = useState(false);
 
@@ -58,4 +58,4 @@ const Skill = (props) => {
   );
 };
 
-export default Skill;
+export default Skills;
