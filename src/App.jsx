@@ -1,41 +1,43 @@
 import "./App.css";
-import PersonalInfo from "./components/personalInfo";
+import PersonalInfo from "./components/form/personalInfo";
 import { useState } from "react";
-import Education from "./components/educationalExp";
-import Career from "./components/practicalExp";
+import Education from "./components/form/educationalExp";
+import Career from "./components/form/practicalExp";
+import Skill from "./components/form/skills";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
   const [educationInfo, setEducationInfo] = useState([]);
   const [careerInfo, setCareerInfo] = useState([]);
+  const [skillInfo, setSkillInfo] = useState([]);
 
   const updatePersonalInfo = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const newInfo = {};
-
-    for (const pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
-      newInfo[pair[0]] = pair[1];
-    }
+    const newInfo = createInfoObject(event);
     setPersonalInfo(newInfo);
   };
 
   const updateEducation = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const newInfo = {};
-
-    for (const pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
-      newInfo[pair[0]] = pair[1];
-    }
+    const newInfo = createInfoObject(event);
     const newEducationInfo = [...educationInfo];
     newEducationInfo.push(newInfo);
     setEducationInfo(newEducationInfo);
   };
 
   const updateCareer = (event) => {
+    const newInfo = createInfoObject(event);
+    const newCareerInfo = [...careerInfo];
+    newCareerInfo.push(newInfo);
+    setCareerInfo(newCareerInfo);
+  };
+
+  const updateSkill = (event) => {
+    const newInfo = createInfoObject(event);
+    const newSkillInfo = [...skillInfo];
+    newSkillInfo.push(newInfo);
+    setSkillInfo(newSkillInfo);
+  };
+
+  const createInfoObject = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newInfo = {};
@@ -44,9 +46,7 @@ function App() {
       console.log(pair[0], pair[1]);
       newInfo[pair[0]] = pair[1];
     }
-    const newCareerInfo = [...careerInfo];
-    newCareerInfo.push(newInfo);
-    setCareerInfo(newCareerInfo);
+    return newInfo;
   };
 
   return (
@@ -58,6 +58,7 @@ function App() {
           <PersonalInfo infoHandler={updatePersonalInfo} />
           <Education infoHandler={updateEducation} info={educationInfo} />
           <Career infoHandler={updateCareer} info={careerInfo} />
+          <Skill infoHandler={updateSkill} info={skillInfo} />
         </div>
       </div>
       <div className="cv">
@@ -100,7 +101,7 @@ function App() {
 
           {careerInfo.map((station, idx) => {
             return (
-              <div className="education-point" key={idx}>
+              <div className="career-point" key={idx}>
                 <div>
                   <p>
                     {station.startDate}-{station.endDate}
@@ -110,6 +111,22 @@ function App() {
                   <p>{station.position}</p>
                   <p>{station.company}</p>
                   <p>{station.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </section>
+        <section>
+          <h3>Kenntnisse und Interessen</h3>
+
+          {skillInfo.map((station, idx) => {
+            return (
+              <div className="skill-point" key={idx}>
+                <div>
+                  <p>{station.skill}</p>
+                </div>
+                <div>
+                  <p>{station.level}</p>
                 </div>
               </div>
             );
