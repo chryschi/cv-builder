@@ -1,9 +1,13 @@
 import "./App.css";
-import PersonalInfo from "./components/form/personalInfo";
+import PersonalInfo from "./components/form/PersonalInfo";
 import { useState } from "react";
-import Education from "./components/form/educationalExp";
-import Career from "./components/form/practicalExp";
-import Skill from "./components/form/skills";
+import Education from "./components/form/EducationalExp";
+import Career from "./components/form/PracticalExp";
+import Skill from "./components/form/Skills";
+import PersonalInfoCV from "./components/cv/PersonalInfoCV";
+import CareerInfoCV from "./components/cv/CareerInfoCV";
+import EducationInfoCV from "./components/cv/EducationInfoCV";
+import SkillsCV from "./components/cv/SkillsCV";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -66,72 +70,10 @@ function App() {
           <h2>{personalInfo.fullName}</h2>
           <p>Lebenslauf</p>
         </header>
-
-        <section>
-          <h3>Persönliche Daten</h3>
-          <ul>
-            <li>Geburtsdatum {personalInfo.birthday}</li>
-            <li>Adresse {personalInfo.adress}</li>
-            <li>Telefon {personalInfo.phone}</li>
-            <li>Email {personalInfo.email}</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Ausbildung</h3>
-
-          {educationInfo.map((station, idx) => {
-            return (
-              <div className="education-point" key={idx}>
-                <div>
-                  <p>
-                    {station.startDate}-{station.endDate}
-                  </p>
-                </div>
-                <div>
-                  <p>{`${station.university}(${station.location})`}</p>
-                  <p>{station.subject}</p>
-                </div>
-              </div>
-            );
-          })}
-        </section>
-        <section>
-          <h3>Karriere</h3>
-
-          {careerInfo.map((station, idx) => {
-            return (
-              <div className="career-point" key={idx}>
-                <div>
-                  <p>
-                    {station.startDate}-{station.endDate}
-                  </p>
-                </div>
-                <div>
-                  <p>{station.position}</p>
-                  <p>{station.company}</p>
-                  <p>{station.description}</p>
-                </div>
-              </div>
-            );
-          })}
-        </section>
-        <section>
-          <h3>Kenntnisse und Interessen</h3>
-
-          {skillInfo.map((station, idx) => {
-            return (
-              <div className="skill-point" key={idx}>
-                <div>
-                  <p>{station.skill}</p>
-                </div>
-                <div>
-                  <p>{station.level}</p>
-                </div>
-              </div>
-            );
-          })}
-        </section>
+        <PersonalInfoCV info={personalInfo} />
+        <EducationInfoCV info={educationInfo} />
+        <CareerInfoCV info={careerInfo} />
+        <SkillsCV info={skillInfo} />
       </div>
     </>
   );
