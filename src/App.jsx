@@ -2,10 +2,12 @@ import "./App.css";
 import PersonalInfo from "./components/personalInfo";
 import { useState } from "react";
 import Education from "./components/educationalExp";
+import Career from "./components/practicalExp";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
   const [educationInfo, setEducationInfo] = useState([]);
+  const [careerInfo, setCareerInfo] = useState([]);
 
   const updatePersonalInfo = (event) => {
     event.preventDefault();
@@ -33,6 +35,20 @@ function App() {
     setEducationInfo(newEducationInfo);
   };
 
+  const updateCareer = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const newInfo = {};
+
+    for (const pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
+      newInfo[pair[0]] = pair[1];
+    }
+    const newCareerInfo = [...careerInfo];
+    newCareerInfo.push(newInfo);
+    setCareerInfo(newCareerInfo);
+  };
+
   return (
     <>
       <div className="sidebar">
@@ -41,6 +57,7 @@ function App() {
         <div className="form">
           <PersonalInfo infoHandler={updatePersonalInfo} />
           <Education infoHandler={updateEducation} info={educationInfo} />
+          <Career infoHandler={updateCareer} info={careerInfo} />
         </div>
       </div>
       <div className="cv">
@@ -73,6 +90,26 @@ function App() {
                 <div>
                   <p>{`${station.university}(${station.location})`}</p>
                   <p>{station.subject}</p>
+                </div>
+              </div>
+            );
+          })}
+        </section>
+        <section>
+          <h3>Karriere</h3>
+
+          {careerInfo.map((station, idx) => {
+            return (
+              <div className="education-point" key={idx}>
+                <div>
+                  <p>
+                    {station.startDate}-{station.endDate}
+                  </p>
+                </div>
+                <div>
+                  <p>{station.position}</p>
+                  <p>{station.company}</p>
+                  <p>{station.description}</p>
                 </div>
               </div>
             );
