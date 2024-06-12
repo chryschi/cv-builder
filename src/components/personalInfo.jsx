@@ -6,13 +6,15 @@ const PersonalInfo = (props) => {
   const [dropped, setDropped] = useState(false);
 
   return (
-    <>
+    <section>
       <div>
-        <button onClick={() => setDropped(!dropped)}>Persönliche Daten</button>
+        <button onClick={() => setDropped(!dropped)}>
+          <h2>Persönliche Daten</h2>
+        </button>
       </div>
 
       {dropped ? (
-        <form onSubmit={props.updateInfo}>
+        <form onSubmit={props.infoHandler}>
           <div>
             <label>Name</label>
             <input type="text" name="fullName" defaultValue="Martin"></input>
@@ -36,7 +38,7 @@ const PersonalInfo = (props) => {
           <button type="submit">Submit</button>
         </form>
       ) : null}
-    </>
+    </section>
   );
 };
 
