@@ -6,17 +6,19 @@ const ProjectsCV = (props) => {
       <h3>Projekte</h3>
 
       {props.info.map((station, idx) => {
-        return (
-          <div className="education-point" key={idx}>
-            <div>
-              <p>{station.project}</p>
-              <p>{station.technologies}</p>
+        if (station.visible === true) {
+          return (
+            <div className="education-point" key={idx}>
+              <div>
+                <p>{station.project}</p>
+                <p>{station.technologies}</p>
+              </div>
+              <div>
+                <p>{station.description}</p>
+              </div>
             </div>
-            <div>
-              <p>{station.description}</p>
-            </div>
-          </div>
-        );
+          );
+        }
       })}
     </section>
   );

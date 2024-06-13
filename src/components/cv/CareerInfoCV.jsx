@@ -6,20 +6,22 @@ const CareerInfoCV = (props) => {
       <h3>Karriere</h3>
 
       {props.info.map((station, idx) => {
-        return (
-          <div className="career-point" key={idx}>
-            <div>
-              <p>
-                {station.startDate}-{station.endDate}
-              </p>
+        if (station.visible === true) {
+          return (
+            <div className="career-point" key={idx}>
+              <div>
+                <p>
+                  {station.startDate}-{station.endDate}
+                </p>
+              </div>
+              <div>
+                <p>{station.position}</p>
+                <p>{station.company}</p>
+                <p>{station.description}</p>
+              </div>
             </div>
-            <div>
-              <p>{station.position}</p>
-              <p>{station.company}</p>
-              <p>{station.description}</p>
-            </div>
-          </div>
-        );
+          );
+        }
       })}
     </section>
   );

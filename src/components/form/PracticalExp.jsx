@@ -4,7 +4,12 @@ import { useState } from "react";
 
 const Career = (props) => {
   const [dropped, setDropped] = useState(false);
-  const [createCareer, setCreateCareer] = useState(false);
+  const [creatingCareer, setCreatingCareer] = useState(false);
+
+  const infoHandler = (e) => {
+    props.infoHandler(e);
+    setCreatingCareer(!creatingCareer);
+  };
 
   return (
     <section>
@@ -17,22 +22,26 @@ const Career = (props) => {
       {dropped ? (
         <>
           {props.info.length !== 0 &&
-            props.info.map((station, idx) => (
-              <p key={idx}>{station.position}</p>
+            props.info.map((station) => (
+              <p key={station.index}>
+                {station.position}
+                <button
+                  onClick={() =>
+                    props.visibilityHandler(station.id, station.index)
+                  }
+                >
+                  show/hide
+                </button>
+              </p>
             ))}
-          <form
-            onSubmit={(e) => {
-              props.infoHandler(e);
-              setCreateCareer(!createCareer);
-            }}
-          >
-            {!createCareer ? (
-              <button onClick={() => setCreateCareer(!createCareer)}>
+          <form onSubmit={(e) => infoHandler(e)}>
+            {!creatingCareer ? (
+              <button onClick={() => setCreatingCareer(!creatingCareer)}>
                 Neuen Karrierepunkt anlegen
               </button>
             ) : null}
 
-            {createCareer ? (
+            {creatingCareer ? (
               <>
                 <div>
                   <label>Position</label>

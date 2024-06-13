@@ -6,19 +6,21 @@ const EducationInfoCV = (props) => {
       <h3>Ausbildung</h3>
 
       {props.info.map((station, idx) => {
-        return (
-          <div className="education-point" key={idx}>
-            <div>
-              <p>
-                {station.startDate}-{station.endDate}
-              </p>
+        if (station.visible === true) {
+          return (
+            <div className="education-point" key={idx}>
+              <div>
+                <p>
+                  {station.startDate}-{station.endDate}
+                </p>
+              </div>
+              <div>
+                <p>{`${station.university}(${station.location})`}</p>
+                <p>{station.subject}</p>
+              </div>
             </div>
-            <div>
-              <p>{`${station.university}(${station.location})`}</p>
-              <p>{station.subject}</p>
-            </div>
-          </div>
-        );
+          );
+        }
       })}
     </section>
   );

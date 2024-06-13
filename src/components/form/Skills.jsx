@@ -4,7 +4,12 @@ import { useState } from "react";
 
 const Skills = (props) => {
   const [dropped, setDropped] = useState(false);
-  const [createSkill, setCreateSkill] = useState(false);
+  const [creatingSkill, setCreatingSkill] = useState(false);
+
+  const infoHandler = (e) => {
+    props.infoHandler(e);
+    setCreatingSkill(!creatingSkill);
+  };
 
   return (
     <section>
@@ -17,20 +22,26 @@ const Skills = (props) => {
       {dropped ? (
         <>
           {props.info.length !== 0 &&
-            props.info.map((station, idx) => <p key={idx}>{station.skill}</p>)}
-          <form
-            onSubmit={(e) => {
-              props.infoHandler(e);
-              setCreateSkill(!createSkill);
-            }}
-          >
-            {!createSkill ? (
-              <button onClick={() => setCreateSkill(!createSkill)}>
+            props.info.map((station) => (
+              <p key={station.index}>
+                {station.skill}
+                <button
+                  onClick={() =>
+                    props.visibilityHandler(station.id, station.index)
+                  }
+                >
+                  show/hide
+                </button>
+              </p>
+            ))}
+          <form onSubmit={(e) => infoHandler(e)}>
+            {!creatingSkill ? (
+              <button onClick={() => setCreatingSkill(!creatingSkill)}>
                 Neue Fähigkeit anlegen
               </button>
             ) : null}
 
-            {createSkill ? (
+            {creatingSkill ? (
               <>
                 <div>
                   <label>Fähigkeit</label>

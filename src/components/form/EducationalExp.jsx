@@ -4,7 +4,13 @@ import { useState } from "react";
 
 const Education = (props) => {
   const [dropped, setDropped] = useState(false);
-  const [createEducation, setCreateEducation] = useState(false);
+  const [creatingEducation, setCreatingEducation] = useState(false);
+  // const [visibilityList, setVisibilityList]
+
+  const infoHandler = (e) => {
+    props.infoHandler(e);
+    setCreatingEducation(!creatingEducation);
+  };
 
   return (
     <section>
@@ -17,22 +23,26 @@ const Education = (props) => {
       {dropped ? (
         <>
           {props.info.length !== 0 &&
-            props.info.map((station, idx) => (
-              <p key={idx}>{station.subject}</p>
+            props.info.map((station) => (
+              <p key={station.index}>
+                {station.subject}
+                <button
+                  onClick={() =>
+                    props.visibilityHandler(station.id, station.index)
+                  }
+                >
+                  show/hide
+                </button>
+              </p>
             ))}
-          <form
-            onSubmit={(e) => {
-              props.infoHandler(e);
-              setCreateEducation(!createEducation);
-            }}
-          >
-            {!createEducation ? (
-              <button onClick={() => setCreateEducation(!createEducation)}>
+          <form onSubmit={(e) => infoHandler(e)}>
+            {!creatingEducation ? (
+              <button onClick={() => setCreatingEducation(!creatingEducation)}>
                 Neue Ausbildung anlegen
               </button>
             ) : null}
 
-            {createEducation ? (
+            {creatingEducation ? (
               <>
                 <div>
                   <label>Studiengang</label>

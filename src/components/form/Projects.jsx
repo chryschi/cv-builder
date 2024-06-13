@@ -4,7 +4,12 @@ import { useState } from "react";
 
 const Projects = (props) => {
   const [dropped, setDropped] = useState(false);
-  const [createProject, setCreateProject] = useState(false);
+  const [creatingProject, setCreatingProject] = useState(false);
+
+  const infoHandler = (e) => {
+    props.infoHandler(e);
+    setCreatingProject(!creatingProject);
+  };
 
   return (
     <section>
@@ -17,22 +22,26 @@ const Projects = (props) => {
       {dropped ? (
         <>
           {props.info.length !== 0 &&
-            props.info.map((station, idx) => (
-              <p key={idx}>{station.project}</p>
+            props.info.map((station) => (
+              <p key={station.index}>
+                {station.project}
+                <button
+                  onClick={() =>
+                    props.visibilityHandler(station.id, station.index)
+                  }
+                >
+                  show/hide
+                </button>
+              </p>
             ))}
-          <form
-            onSubmit={(e) => {
-              props.infoHandler(e);
-              setCreateProject(!createProject);
-            }}
-          >
-            {!createProject ? (
-              <button onClick={() => setCreateProject(!createProject)}>
+          <form onSubmit={(e) => infoHandler(e)}>
+            {!creatingProject ? (
+              <button onClick={() => setCreatingProject(!creatingProject)}>
                 Neues Projekt anlegen
               </button>
             ) : null}
 
-            {createProject ? (
+            {creatingProject ? (
               <>
                 <div>
                   <label>Projekt</label>
