@@ -45,37 +45,40 @@ const Education = (props) => {
             {creatingEducation ? (
               <>
                 <div>
-                  <label>Studiengang</label>
+                  <label htmlFor="subject">Studiengang</label>
                   <input
                     type="text"
+                    id="subject"
                     name="subject"
                     defaultValue="literature"
                   ></input>
                 </div>
                 <div>
-                  <label>Universität</label>
+                  <label htmlFor="university">Universität</label>
                   <input
                     type="text"
+                    id="university"
                     name="university"
                     defaultValue="University"
                   ></input>
                 </div>
                 <div>
-                  <label>Ort</label>
+                  <label htmlFor="location">Ort</label>
                   <input
                     type="text"
+                    id="location"
                     name="location"
                     defaultValue="Martin"
                   ></input>
                 </div>
                 <div>
                   <div>
-                    <label>Beginn</label>
-                    <input type="text" name="startDate"></input>
+                    <label htmlFor="startDate">Beginn</label>
+                    <input type="text" id="startDate" name="startDate"></input>
                   </div>
                   <div>
-                    <label>Ende</label>
-                    <input type="text" name="endDate"></input>
+                    <label htmlFor="endDate">Ende</label>
+                    <input type="text" id="endDate" name="endDate"></input>
                   </div>
                 </div>
                 <button type="submit">Submit</button>{" "}

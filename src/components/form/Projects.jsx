@@ -44,25 +44,28 @@ const Projects = (props) => {
             {creatingProject ? (
               <>
                 <div>
-                  <label>Projekt</label>
+                  <label htmlFor="project">Projekt</label>
                   <input
                     type="text"
+                    id="project"
                     name="project"
                     defaultValue="Todo-App"
                   ></input>
                 </div>
                 <div>
-                  <label>Verwendete Technologien</label>
+                  <label htmlFor="technologies">Verwendete Technologien</label>
                   <input
                     type="text"
+                    id="technologies"
                     name="technologies"
                     defaultValue="React, Javascript"
                   ></input>
                 </div>
                 <div>
-                  <label>Beschreibung</label>
+                  <label htmlFor="description">Beschreibung</label>
                   <textarea
                     type="text"
+                    id="description"
                     name="description"
                     defaultValue=""
                   ></textarea>

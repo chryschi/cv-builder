@@ -16,12 +16,17 @@ const Signature = (props) => {
       {dropped ? (
         <form onSubmit={props.infoHandler}>
           <div>
-            <label>Ort</label>
-            <input type="text" name="location" defaultValue="Stockholm"></input>
+            <label htmlFor="location">Ort</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              defaultValue="Stockholm"
+            ></input>
           </div>
           <div>
-            <label>Datum</label>
-            <input type="date" name="date"></input>
+            <label htmlFor="date">Datum</label>
+            <input type="date" id="date" name="date"></input>
           </div>
 
           <button type="submit">Submit</button>
