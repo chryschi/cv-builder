@@ -8,7 +8,7 @@ const PersonalInfo = (props) => {
   return (
     <section>
       <div>
-        <button onClick={() => setDropped(!dropped)}>
+        <button className="section" onClick={() => setDropped(!dropped)}>
           <h2>Persönliche Daten</h2>
         </button>
       </div>
@@ -16,24 +16,34 @@ const PersonalInfo = (props) => {
       {dropped ? (
         <form onSubmit={props.infoHandler}>
           <div>
-            <label>Name</label>
-            <input type="text" name="fullName" defaultValue="Martin"></input>
+            <label htmlFor="fullName">Name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              defaultValue="Martin"
+            ></input>
           </div>
           <div>
-            <label>Geburtsdatum</label>
-            <input type="date" name="birthday"></input>
+            <label htmlFor="birthday">Geburtsdatum</label>
+            <input type="date" id="birthday" name="birthday"></input>
           </div>
           <div>
-            <label>Adresse</label>
-            <input type="text" name="adress" defaultValue="London"></input>
+            <label htmlFor="adress">Adresse</label>
+            <input
+              type="text"
+              id="adress"
+              name="adress"
+              defaultValue="London"
+            ></input>
           </div>
           <div>
-            <label>Telefon</label>
-            <input type="number" name="phone"></input>
+            <label htmlFor="phone">Telefon</label>
+            <input type="number" id="phone" name="phone"></input>
           </div>
           <div>
-            <label>Email</label>
-            <input type="email" name="email"></input>
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" name="email"></input>
           </div>
           <button type="submit">Submit</button>
         </form>

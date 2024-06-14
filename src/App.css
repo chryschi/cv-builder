@@ -2,7 +2,59 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
   display: flex;
   flex-direction: row;
+  justify-content: left;
+  flex-wrap: nowrap;
+}
+
+button h2 {
+  margin: 0;
+}
+
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  overflow-y: scroll;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: 2px solid transparent;
+  background-color: transparent;
+}
+
+input:focus {
+  border-color: blue;
+  border-radius: 5px;
+  outline: none;
+}
+
+.cv {
+  min-width: 800px;
+  flex: 1 auto;
+  background-color: white;
+}
+
+.cv ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cv header {
+  text-align: center;
 }

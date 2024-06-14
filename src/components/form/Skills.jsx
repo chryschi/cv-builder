@@ -14,7 +14,7 @@ const Skills = (props) => {
   return (
     <section>
       <div>
-        <button onClick={() => setDropped(!dropped)}>
+        <button className="section" onClick={() => setDropped(!dropped)}>
           <h2>Kenntnisse</h2>
         </button>
       </div>

@@ -14,7 +14,7 @@ const Career = (props) => {
   return (
     <section>
       <div>
-        <button onClick={() => setDropped(!dropped)}>
+        <button className="section" onClick={() => setDropped(!dropped)}>
           <h2>Karriere</h2>
         </button>
       </div>

@@ -15,7 +15,7 @@ const Education = (props) => {
   return (
     <section>
       <div>
-        <button onClick={() => setDropped(!dropped)}>
+        <button className="section" onClick={() => setDropped(!dropped)}>
           <h2>Ausbildung</h2>
         </button>
       </div>

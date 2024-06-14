@@ -124,37 +124,41 @@ function App() {
   return (
     <>
       <div className="sidebar">
-        <h1>Lebenslauf Generator</h1>
-        <div className="form">
-          <PersonalInfo infoHandler={updateNoniterableInfo} />
-          <Education
-            infoHandler={updateIterableInfo}
-            info={educationInfo}
-            visibilityHandler={toggleVisibility}
-          />
-          <Career
-            infoHandler={updateIterableInfo}
-            info={careerInfo}
-            visibilityHandler={toggleVisibility}
-          />
-          <Projects
-            infoHandler={updateIterableInfo}
-            info={projectsInfo}
-            visibilityHandler={toggleVisibility}
-          />
-          <Skills
-            infoHandler={updateIterableInfo}
-            info={skillInfo}
-            visibilityHandler={toggleVisibility}
-          />
-          <Signature
-            infoHandler={updateNoniterableInfo}
-            info={signatureInfo}
-            visibilityHandler={toggleVisibility}
-          />
-        </div>
+        <header>
+          <h1>Lebenslauf Generator</h1>
+        </header>
+        <main>
+          <div className="form">
+            <PersonalInfo infoHandler={updateNoniterableInfo} />
+            <Education
+              infoHandler={updateIterableInfo}
+              info={educationInfo}
+              visibilityHandler={toggleVisibility}
+            />
+            <Career
+              infoHandler={updateIterableInfo}
+              info={careerInfo}
+              visibilityHandler={toggleVisibility}
+            />
+            <Projects
+              infoHandler={updateIterableInfo}
+              info={projectsInfo}
+              visibilityHandler={toggleVisibility}
+            />
+            <Skills
+              infoHandler={updateIterableInfo}
+              info={skillInfo}
+              visibilityHandler={toggleVisibility}
+            />
+            <Signature
+              infoHandler={updateNoniterableInfo}
+              info={signatureInfo}
+              visibilityHandler={toggleVisibility}
+            />
+          </div>
+        </main>
       </div>
-      <div className="cv">
+      <article className="cv">
         <header>
           <h2>{personalInfo.fullName}</h2>
           <p>Lebenslauf</p>
@@ -165,7 +169,7 @@ function App() {
         <ProjectsCV info={projectsInfo} />
         <SkillsCV info={skillInfo} />
         <SignatureCV info={signatureInfo} />
-      </div>
+      </article>
     </>
   );
 }

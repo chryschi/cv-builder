@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  height: 100%;
 }
 
 a {
@@ -25,9 +27,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 h1 {
@@ -53,7 +54,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+/* 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -64,5 +65,26 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+} */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #d9e5f0;
+    background-color: #1f1f1f;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    color: white;
+    background-color: transparent;
+  }
+  input {
+    color: #d9e5f0;
+  }
+
+  .cv {
+    color: #1a1a1a;
   }
 }
