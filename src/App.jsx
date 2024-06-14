@@ -10,6 +10,8 @@ import EducationInfoCV from "./components/cv/EducationInfoCV";
 import SkillsCV from "./components/cv/SkillsCV";
 import Projects from "./components/form/Projects";
 import ProjectsCV from "./components/cv/ProjectsCV";
+import Signature from "./components/form/Signature";
+import SignatureCV from "./components/cv/SignatureCV";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -17,22 +19,36 @@ function App() {
   const [projectsInfo, setProjectsInfo] = useState([]);
   const [careerInfo, setCareerInfo] = useState([]);
   const [skillInfo, setSkillInfo] = useState([]);
+  const [signatureInfo, setSignatureInfo] = useState({});
 
-  const updatePersonalInfo = (event) => {
+  const updateNoniterableInfo = (event) => {
+    const setInfoFnc = [setPersonalInfo, setSignatureInfo];
+    const tagList = ["fullName", "date"];
+
     const newInfo = createInfoObject(event);
     delete newInfo.visible;
-    setPersonalInfo(newInfo);
+    const id = tagList.findIndex((tag) => {
+      return newInfo[tag] === undefined ? false : true;
+    });
+    setInfoFnc[id](newInfo);
   };
 
-  const updateOtherInfo = (event) => {
-    const infoList = [educationInfo, projectsInfo, careerInfo, skillInfo];
+  const updateIterableInfo = (event) => {
+    const infoList = [
+      educationInfo,
+      projectsInfo,
+      careerInfo,
+      skillInfo,
+      signatureInfo,
+    ];
     const setInfoFnc = [
       setEducationInfo,
       setProjectsInfo,
       setCareerInfo,
       setSkillInfo,
+      setSignatureInfo,
     ];
-    const tagList = ["subject", "project", "position", "skill"];
+    const tagList = ["subject", "project", "position", "skill", "date"];
     const newInfo = createInfoObject(event);
 
     const id = tagList.findIndex((tag) => {
@@ -111,25 +127,30 @@ function App() {
         <h1>Lebenslauf Generator</h1>
         <button>Generiere Lebenslauf</button>
         <div className="form">
-          <PersonalInfo infoHandler={updatePersonalInfo} />
+          <PersonalInfo infoHandler={updateNoniterableInfo} />
           <Education
-            infoHandler={updateOtherInfo}
+            infoHandler={updateIterableInfo}
             info={educationInfo}
             visibilityHandler={toggleVisibility}
           />
           <Career
-            infoHandler={updateOtherInfo}
+            infoHandler={updateIterableInfo}
             info={careerInfo}
             visibilityHandler={toggleVisibility}
           />
           <Projects
-            infoHandler={updateOtherInfo}
+            infoHandler={updateIterableInfo}
             info={projectsInfo}
             visibilityHandler={toggleVisibility}
           />
           <Skills
-            infoHandler={updateOtherInfo}
+            infoHandler={updateIterableInfo}
             info={skillInfo}
+            visibilityHandler={toggleVisibility}
+          />
+          <Signature
+            infoHandler={updateNoniterableInfo}
+            info={signatureInfo}
             visibilityHandler={toggleVisibility}
           />
         </div>
@@ -144,6 +165,7 @@ function App() {
         <CareerInfoCV info={careerInfo} />
         <ProjectsCV info={projectsInfo} />
         <SkillsCV info={skillInfo} />
+        <SignatureCV info={signatureInfo} />
       </div>
     </>
   );
