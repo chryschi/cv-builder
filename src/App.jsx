@@ -125,7 +125,6 @@ function App() {
     <>
       <div className="sidebar">
         <h1>Lebenslauf Generator</h1>
-        <button>Generiere Lebenslauf</button>
         <div className="form">
           <PersonalInfo infoHandler={updateNoniterableInfo} />
           <Education
