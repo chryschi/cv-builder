@@ -1,17 +1,18 @@
 import "./App.css";
-import PersonalInfo from "./components/form/PersonalInfo";
 import { useState } from "react";
-import Education from "./components/form/EducationalExp";
-import Career from "./components/form/PracticalExp";
-import Skills from "./components/form/Skills";
+import Form from "./components/form/Form";
 import PersonalInfoCV from "./components/cv/PersonalInfoCV";
 import CareerInfoCV from "./components/cv/CareerInfoCV";
 import EducationInfoCV from "./components/cv/EducationInfoCV";
 import SkillsCV from "./components/cv/SkillsCV";
-import Projects from "./components/form/Projects";
 import ProjectsCV from "./components/cv/ProjectsCV";
-import Signature from "./components/form/Signature";
 import SignatureCV from "./components/cv/SignatureCV";
+import EducationForm from "./components/form/EducationForm";
+import PracticalExpForm from "./components/form/PracticalExpForm";
+import ProjectsForm from "./components/form/ProjectsForm";
+import SkillsForm from "./components/form/SkillsForm";
+import SignatureForm from "./components/form/SignatureForm";
+import PersonalInfoForm from "./components/form/PersonalInfoForm";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -129,31 +130,77 @@ function App() {
         </header>
         <main>
           <div className="form">
-            <PersonalInfo infoHandler={updateNoniterableInfo} />
-            <Education
+            <Form
+              infoHandler={updateNoniterableInfo}
+              info={personalInfo}
+              content={{
+                title: "Persönliche Daten",
+                newPointText: "",
+                displayEntry: "",
+                component: <PersonalInfoForm />,
+              }}
+              singleInfo={true}
+            />
+
+            <Form
               infoHandler={updateIterableInfo}
               info={educationInfo}
               visibilityHandler={toggleVisibility}
+              content={{
+                title: "Ausbildung",
+                newPointText: "Neue Ausbildung anlegen",
+                displayEntry: "subject",
+                component: <EducationForm />,
+              }}
+              singleInfo={false}
             />
-            <Career
+            <Form
               infoHandler={updateIterableInfo}
               info={careerInfo}
               visibilityHandler={toggleVisibility}
+              content={{
+                title: "Karriere",
+                newPointText: "Neuen Karrierepunkt anlegen",
+                displayEntry: "position",
+                component: <PracticalExpForm />,
+              }}
+              singleInfo={false}
             />
-            <Projects
+            <Form
               infoHandler={updateIterableInfo}
               info={projectsInfo}
               visibilityHandler={toggleVisibility}
+              content={{
+                title: "Projekte",
+                newPointText: "Neues Projekt anlegen",
+                displayEntry: "project",
+                component: <ProjectsForm />,
+              }}
+              singleInfo={false}
             />
-            <Skills
+
+            <Form
               infoHandler={updateIterableInfo}
               info={skillInfo}
               visibilityHandler={toggleVisibility}
+              content={{
+                title: "Kenntnisse",
+                newPointText: "Neue Fähigkeit anlegen",
+                displayEntry: "skill",
+                component: <SkillsForm />,
+              }}
+              singleInfo={false}
             />
-            <Signature
+            <Form
               infoHandler={updateNoniterableInfo}
               info={signatureInfo}
-              visibilityHandler={toggleVisibility}
+              content={{
+                title: "Unterschrift",
+                newPointText: "",
+                displayEntry: "",
+                component: <SignatureForm />,
+              }}
+              singleInfo={true}
             />
           </div>
         </main>
