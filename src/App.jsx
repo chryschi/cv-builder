@@ -24,54 +24,32 @@ function App() {
     setPersonalInfo(newInfo);
   };
 
-  const updateEducation = (event) => {
+  const updateOtherInfo = (event) => {
+    const infoList = [educationInfo, projectsInfo, careerInfo, skillInfo];
+    const setInfoFnc = [
+      setEducationInfo,
+      setProjectsInfo,
+      setCareerInfo,
+      setSkillInfo,
+    ];
+    const tagList = ["subject", "project", "position", "skill"];
     const newInfo = createInfoObject(event);
-    newInfo["index"] =
-      educationInfo.length === 0
-        ? 1
-        : educationInfo[educationInfo.length - 1].index + 1;
 
-    newInfo["id"] = 0;
+    const id = tagList.findIndex((tag) => {
+      return newInfo[tag] === undefined ? false : true;
+    });
 
-    const newEducationInfo = [...educationInfo];
-    newEducationInfo.push(newInfo);
-    setEducationInfo(newEducationInfo);
+    newInfo["index"] = setIndex(infoList[id]);
+    newInfo["id"] = id;
+
+    const targetInfo = [...infoList[id]];
+    targetInfo.push(newInfo);
+    setInfoFnc[id](targetInfo);
   };
 
-  const updateCareer = (event) => {
-    const newInfo = createInfoObject(event);
-    newInfo["index"] =
-      careerInfo.length === 0 ? 1 : careerInfo[careerInfo.length - 1].index + 1;
-    newInfo["id"] = 1;
-
-    const newCareerInfo = [...careerInfo];
-    newCareerInfo.push(newInfo);
-    setCareerInfo(newCareerInfo);
-  };
-
-  const updateProjects = (event) => {
-    const newInfo = createInfoObject(event);
-    newInfo["index"] =
-      projectsInfo.length === 0
-        ? 1
-        : projectsInfo[projectsInfo.length - 1].index + 1;
-
-    newInfo["id"] = 2;
-
-    const newProjectsInfo = [...projectsInfo];
-    newProjectsInfo.push(newInfo);
-    setProjectsInfo(newProjectsInfo);
-  };
-
-  const updateSkills = (event) => {
-    const newInfo = createInfoObject(event);
-    newInfo["index"] =
-      skillInfo.length === 0 ? 1 : skillInfo[skillInfo.length - 1].index + 1;
-    newInfo["id"] = 3;
-
-    const newSkillInfo = [...skillInfo];
-    newSkillInfo.push(newInfo);
-    setSkillInfo(newSkillInfo);
+  const setIndex = (info) => {
+    const index = info.length === 0 ? 1 : info[info.length - 1].index + 1;
+    return index;
   };
 
   const createInfoObject = (event) => {
@@ -83,7 +61,6 @@ function App() {
       newInfo[pair[0]] = pair[1];
     }
     newInfo["visible"] = true;
-    console.log(newInfo);
     return newInfo;
   };
 
@@ -123,9 +100,6 @@ function App() {
 
   const updateVisibility = (info, setInfoCallback, idx) => {
     const updatedInfo = [...info];
-    console.log("updated Info");
-    console.log(updatedInfo);
-
     const currentVisibility = updatedInfo[idx].visible;
     updatedInfo[idx].visible = !currentVisibility;
     setInfoCallback(updatedInfo);
@@ -139,22 +113,22 @@ function App() {
         <div className="form">
           <PersonalInfo infoHandler={updatePersonalInfo} />
           <Education
-            infoHandler={updateEducation}
+            infoHandler={updateOtherInfo}
             info={educationInfo}
             visibilityHandler={toggleVisibility}
           />
           <Career
-            infoHandler={updateCareer}
+            infoHandler={updateOtherInfo}
             info={careerInfo}
             visibilityHandler={toggleVisibility}
           />
           <Projects
-            infoHandler={updateProjects}
+            infoHandler={updateOtherInfo}
             info={projectsInfo}
             visibilityHandler={toggleVisibility}
           />
           <Skills
-            infoHandler={updateSkills}
+            infoHandler={updateOtherInfo}
             info={skillInfo}
             visibilityHandler={toggleVisibility}
           />
