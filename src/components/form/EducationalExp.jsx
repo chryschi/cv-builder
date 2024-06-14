@@ -21,7 +21,7 @@ const Education = (props) => {
       </div>
 
       {dropped ? (
-        <>
+        <div className="drop-menu">
           {props.info.length !== 0 &&
             props.info.map((station) => (
               <p key={station.index}>
@@ -85,7 +85,7 @@ const Education = (props) => {
               </>
             ) : null}
           </form>
-        </>
+        </div>
       ) : null}
     </section>
   );
