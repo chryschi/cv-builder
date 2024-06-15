@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -8,8 +12,8 @@
   flex-wrap: nowrap;
 }
 
-button h2 {
-  margin: 0;
+header {
+  padding: 2em;
 }
 
 .sidebar {
@@ -18,30 +22,149 @@ button h2 {
   flex-direction: column;
 }
 
+h2.drop-header {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.4em 0.4em;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
+  display: flex;
+}
+
+h2.drop-header:hover {
+  border-color: white;
+}
+
+h2.drop-header button {
+  border: none;
+}
+
+button.drop-button {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.drop-header button.visibility {
+  padding: 0;
+}
+
+section:has(:focus) h2 {
+  background-color: #2b2b2b;
+}
+
+.drop-button {
+  width: 100%;
+  text-align: left;
+}
+
 main {
   overflow-y: scroll;
+  scrollbar-color: #525151 #292929;
   flex: 1 auto;
+}
+
+.bulletpoint-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 0.4em 0.8em;
+  border-bottom: 2px solid rgb(112, 112, 112);
+}
+
+.bulletpoint-container p {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.bulletpoint-container .buttons {
+  display: flex;
+  margin-left: auto;
+}
+
+.bulletpoint-container button {
+  display: flex;
+  padding: 0.2em;
+}
+
+button.delete:hover {
+  color: red;
+}
+
+button.edit:hover {
+  color: rgb(23, 204, 236);
+}
+
+button.visibility:hover {
+  color: orange;
+}
+
+.delete:hover,
+.edit:hover,
+.visibility:hover {
+  border-color: transparent;
 }
 
 form {
   display: flex;
   flex-direction: column;
   justify-content: start;
+
+  padding: 0.6em 0.8em;
 }
+
 form div {
   display: flex;
   flex-direction: column;
+  margin-bottom: 5px;
 }
 
-input {
+.add-button {
+  display: flex;
+  align-items: center;
+
+  color: hsl(0, 0%, 5%);
+  border-color: hsl(162, 60%, 60%);
+  background-color: hsl(162, 60%, 50%);
+  transition: background-color 0.25s;
+  transition: border-color 0.25s;
+}
+
+.add-button:hover {
+  color: hsl(0, 0%, 6%);
+  border-color: hsl(0, 0%, 11%);
+  background-color: hsl(162, 60%, 60%);
+}
+
+.add-button span {
+  margin-left: auto;
+}
+
+input,
+textarea {
   border: 2px solid transparent;
+  border-radius: 5px;
   background-color: transparent;
+  padding: 0.4em 0.8em;
+  transition: border-color 0.25s;
 }
 
-input:focus {
-  border-color: blue;
-  border-radius: 5px;
+input:hover,
+textarea:hover {
+  border-color: rgb(141, 141, 141);
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgb(141, 141, 141);
+
   outline: none;
+  background-color: #2b2b2b;
 }
 
 .cv {
