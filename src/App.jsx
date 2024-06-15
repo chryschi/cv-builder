@@ -22,6 +22,22 @@ function App() {
   const [skillInfo, setSkillInfo] = useState([]);
   const [signatureInfo, setSignatureInfo] = useState({});
 
+  const infoList = [
+    educationInfo,
+    projectsInfo,
+    careerInfo,
+    skillInfo,
+    signatureInfo,
+  ];
+  const setInfoFnc = [
+    setEducationInfo,
+    setProjectsInfo,
+    setCareerInfo,
+    setSkillInfo,
+    setSignatureInfo,
+  ];
+  const tagList = ["subject", "project", "position", "skill", "date"];
+
   const updateNoniterableInfo = (event) => {
     const setInfoFnc = [setPersonalInfo, setSignatureInfo];
     const tagList = ["fullName", "date"];
@@ -35,21 +51,6 @@ function App() {
   };
 
   const updateIterableInfo = (event) => {
-    const infoList = [
-      educationInfo,
-      projectsInfo,
-      careerInfo,
-      skillInfo,
-      signatureInfo,
-    ];
-    const setInfoFnc = [
-      setEducationInfo,
-      setProjectsInfo,
-      setCareerInfo,
-      setSkillInfo,
-      setSignatureInfo,
-    ];
-    const tagList = ["subject", "project", "position", "skill", "date"];
     const newInfo = createInfoObject(event);
 
     const id = tagList.findIndex((tag) => {
@@ -122,6 +123,12 @@ function App() {
     setInfoCallback(updatedInfo);
   };
 
+  const deleteBulletpoint = (id, index) => {
+    const copyInfo = [...infoList[id]];
+    const newInfo = copyInfo.filter((station) => station.index !== index);
+    setInfoFnc[id](newInfo);
+  };
+
   return (
     <>
       <div className="sidebar">
@@ -153,6 +160,7 @@ function App() {
                 component: <EducationForm />,
               }}
               singleInfo={false}
+              deleteHandler={deleteBulletpoint}
             />
             <Form
               infoHandler={updateIterableInfo}
@@ -165,6 +173,7 @@ function App() {
                 component: <PracticalExpForm />,
               }}
               singleInfo={false}
+              deleteHandler={deleteBulletpoint}
             />
             <Form
               infoHandler={updateIterableInfo}
@@ -177,6 +186,7 @@ function App() {
                 component: <ProjectsForm />,
               }}
               singleInfo={false}
+              deleteHandler={deleteBulletpoint}
             />
 
             <Form
@@ -190,6 +200,7 @@ function App() {
                 component: <SkillsForm />,
               }}
               singleInfo={false}
+              deleteHandler={deleteBulletpoint}
             />
             <Form
               infoHandler={updateNoniterableInfo}

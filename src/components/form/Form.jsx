@@ -8,6 +8,7 @@ const Form = ({
   visibilityHandler,
   content,
   singleInfo,
+  deleteHandler,
 }) => {
   const [dropped, setDropped] = useState(false);
   const [createMode, setCreateMode] = useState(false);
@@ -41,7 +42,12 @@ const Form = ({
                     <p key={station.index}>
                       {station[content.displayEntry]}
                       <div className="buttons">
-                        <button className="delete">
+                        <button
+                          className="delete"
+                          onClick={() =>
+                            deleteHandler(station.id, station.index)
+                          }
+                        >
                           <span className="material-symbols-outlined">
                             delete_forever
                           </span>
