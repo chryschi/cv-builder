@@ -7,10 +7,6 @@ import EducationInfoCV from "./components/cv/EducationInfoCV";
 import SkillsCV from "./components/cv/SkillsCV";
 import ProjectsCV from "./components/cv/ProjectsCV";
 import SignatureCV from "./components/cv/SignatureCV";
-import EducationForm from "./components/form/EducationForm";
-import PracticalExpForm from "./components/form/PracticalExpForm";
-import ProjectsForm from "./components/form/ProjectsForm";
-import SkillsForm from "./components/form/SkillsForm";
 import SignatureForm from "./components/form/SignatureForm";
 import PersonalInfoForm from "./components/form/PersonalInfoForm";
 
@@ -22,28 +18,21 @@ function App() {
   const [skillInfo, setSkillInfo] = useState([]);
   const [signatureInfo, setSignatureInfo] = useState({});
 
-  const infoList = [
-    educationInfo,
-    projectsInfo,
-    careerInfo,
-    skillInfo,
-    signatureInfo,
-  ];
+  const infoList = [educationInfo, projectsInfo, careerInfo, skillInfo];
   const setInfoFnc = [
     setEducationInfo,
     setProjectsInfo,
     setCareerInfo,
     setSkillInfo,
-    setSignatureInfo,
   ];
-  const tagList = ["subject", "project", "position", "skill", "date"];
+  const tagList = ["subject", "project", "position", "skill"];
 
   const updateNoniterableInfo = (event) => {
     const setInfoFnc = [setPersonalInfo, setSignatureInfo];
     const tagList = ["fullName", "date"];
 
     const newInfo = createInfoObject(event);
-    delete newInfo.visible;
+
     const id = tagList.findIndex((tag) => {
       return newInfo[tag] === undefined ? false : true;
     });
@@ -59,6 +48,7 @@ function App() {
 
     newInfo["index"] = setIndex(infoList[id]);
     newInfo["id"] = id;
+    newInfo["visible"] = true;
 
     const targetInfo = [...infoList[id]];
     targetInfo.push(newInfo);
@@ -78,8 +68,22 @@ function App() {
     for (const pair of formData.entries()) {
       newInfo[pair[0]] = pair[1];
     }
-    newInfo["visible"] = true;
     return newInfo;
+  };
+
+  const updateInfo = (event, id, index) => {
+    const newInfo = createInfoObject(event);
+    const copyInfo = [...infoList[id]];
+    const bulletpointIndex = getBulletpointIndex(copyInfo, id, index);
+    const bulletpoint = copyInfo[bulletpointIndex];
+    for (const [key, value] of Object.entries(newInfo)) {
+      console.log(key);
+      console.log(value);
+      if (copyInfo[`${key}`] !== value) {
+        bulletpoint[`${key}`] = value;
+      }
+    }
+    setInfoFnc[id](copyInfo);
   };
 
   const toggleVisibility = (searchedId, searchedIndex) => {
@@ -145,6 +149,7 @@ function App() {
                 newPointText: "",
                 displayEntry: "",
                 component: <PersonalInfoForm />,
+                componentId: null,
               }}
               singleInfo={true}
             />
@@ -157,10 +162,12 @@ function App() {
                 title: "Ausbildung",
                 newPointText: "Neue Ausbildung anlegen",
                 displayEntry: "subject",
-                component: <EducationForm />,
+                component: null,
+                componentId: 0,
               }}
               singleInfo={false}
               deleteHandler={deleteBulletpoint}
+              editHandler={updateInfo}
             />
             <Form
               infoHandler={updateIterableInfo}
@@ -170,10 +177,12 @@ function App() {
                 title: "Karriere",
                 newPointText: "Neuen Karrierepunkt anlegen",
                 displayEntry: "position",
-                component: <PracticalExpForm />,
+                component: null,
+                componentId: 2,
               }}
               singleInfo={false}
               deleteHandler={deleteBulletpoint}
+              editHandler={updateInfo}
             />
             <Form
               infoHandler={updateIterableInfo}
@@ -183,10 +192,12 @@ function App() {
                 title: "Projekte",
                 newPointText: "Neues Projekt anlegen",
                 displayEntry: "project",
-                component: <ProjectsForm />,
+                component: null,
+                componentId: 1,
               }}
               singleInfo={false}
               deleteHandler={deleteBulletpoint}
+              editHandler={updateInfo}
             />
 
             <Form
@@ -197,10 +208,12 @@ function App() {
                 title: "Kenntnisse",
                 newPointText: "Neue Fähigkeit anlegen",
                 displayEntry: "skill",
-                component: <SkillsForm />,
+                component: null,
+                componentId: 3,
               }}
               singleInfo={false}
               deleteHandler={deleteBulletpoint}
+              editHandler={updateInfo}
             />
             <Form
               infoHandler={updateNoniterableInfo}
@@ -210,6 +223,7 @@ function App() {
                 newPointText: "",
                 displayEntry: "",
                 component: <SignatureForm />,
+                componentId: null,
               }}
               singleInfo={true}
             />

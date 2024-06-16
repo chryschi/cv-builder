@@ -1,4 +1,6 @@
-const SkillsForm = () => {
+/* eslint-disable react/prop-types */
+
+const SkillsForm = ({ editInfo, editMode }) => {
   return (
     <>
       <div>
@@ -7,7 +9,7 @@ const SkillsForm = () => {
           type="text"
           id="skill"
           name="skill"
-          defaultValue="Englisch"
+          defaultValue={editMode ? editInfo.skill : "Englisch"}
         ></input>
       </div>
       <div>
@@ -16,10 +18,9 @@ const SkillsForm = () => {
           type="text"
           id="level"
           name="level"
-          defaultValue="fließend"
+          defaultValue={editMode ? editInfo.level : "fließend"}
         ></input>
       </div>
-      <button type="submit">Submit</button>{" "}
     </>
   );
 };

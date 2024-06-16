@@ -14,8 +14,6 @@ const SignatureForm = () => {
         <label htmlFor="date">Datum</label>
         <input type="date" id="date" name="date"></input>
       </div>
-
-      <button type="submit">Submit</button>
     </>
   );
 };

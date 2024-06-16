@@ -1,4 +1,6 @@
-const PracticalExpForm = () => {
+/* eslint-disable react/prop-types */
+
+const PracticalExpForm = ({ editInfo, editMode }) => {
   return (
     <>
       <div>
@@ -7,7 +9,7 @@ const PracticalExpForm = () => {
           type="text"
           id="position"
           name="position"
-          defaultValue="Web Developer"
+          defaultValue={editMode ? editInfo.position : "Web Developer"}
         ></input>
       </div>
       <div>
@@ -16,7 +18,7 @@ const PracticalExpForm = () => {
           type="text"
           id="company"
           name="company"
-          defaultValue="Web GmbH"
+          defaultValue={editMode ? editInfo.company : "Web GmbH"}
         ></input>
       </div>
       <div>
@@ -25,20 +27,29 @@ const PracticalExpForm = () => {
           type="text"
           id="description"
           name="description"
-          defaultValue=""
+          defaultValue={editMode ? editInfo.description : ""}
         ></textarea>
       </div>
-      <p>
+      <fieldset>
         <div>
           <label htmlFor="startDate">Beginn</label>
-          <input type="text" id="startDate" name="startDate"></input>
+          <input
+            type="text"
+            id="startDate"
+            name="startDate"
+            defaultValue={editMode ? editInfo.startDate : ""}
+          ></input>
         </div>
         <div>
           <label htmlFor="endDate">Ende</label>
-          <input type="text" id="endDate" name="endDate"></input>
+          <input
+            type="text"
+            id="endDate"
+            name="endDate"
+            defaultValue={editMode ? editInfo.endDate : ""}
+          ></input>
         </div>
-      </p>
-      <button type="submit">Submit</button>{" "}
+      </fieldset>
     </>
   );
 };

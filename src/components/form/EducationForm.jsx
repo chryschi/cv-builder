@@ -1,4 +1,6 @@
-const EducationForm = () => {
+/* eslint-disable react/prop-types */
+
+const EducationForm = ({ editInfo, editMode }) => {
   return (
     <>
       <div>
@@ -7,7 +9,7 @@ const EducationForm = () => {
           type="text"
           id="subject"
           name="subject"
-          defaultValue="literature"
+          defaultValue={editMode ? editInfo.subject : "literature"}
         ></input>
       </div>
       <div>
@@ -16,7 +18,7 @@ const EducationForm = () => {
           type="text"
           id="university"
           name="university"
-          defaultValue="University"
+          defaultValue={editMode ? editInfo.university : "University"}
         ></input>
       </div>
       <div>
@@ -25,20 +27,29 @@ const EducationForm = () => {
           type="text"
           id="location"
           name="location"
-          defaultValue="Martin"
+          defaultValue={editMode ? editInfo.location : "Martin"}
         ></input>
       </div>
-      <p>
+      <fieldset>
         <div>
           <label htmlFor="startDate">Beginn</label>
-          <input type="text" id="startDate" name="startDate"></input>
+          <input
+            type="text"
+            id="startDate"
+            name="startDate"
+            defaultValue={editMode ? editInfo.startDate : ""}
+          ></input>
         </div>
         <div>
           <label htmlFor="endDate">Ende</label>
-          <input type="text" id="endDate" name="endDate"></input>
+          <input
+            type="text"
+            id="endDate"
+            name="endDate"
+            defaultValue={editMode ? editInfo.endDate : ""}
+          ></input>
         </div>
-      </p>
-      <button type="submit">Submit</button>{" "}
+      </fieldset>
     </>
   );
 };

@@ -1,4 +1,6 @@
-const ProjectsForm = () => {
+/* eslint-disable react/prop-types */
+
+const ProjectsForm = ({ editInfo, editMode }) => {
   return (
     <>
       <div>
@@ -7,7 +9,7 @@ const ProjectsForm = () => {
           type="text"
           id="project"
           name="project"
-          defaultValue="Todo-App"
+          defaultValue={editMode ? editInfo.project : "Todo-App"}
         ></input>
       </div>
       <div>
@@ -16,7 +18,7 @@ const ProjectsForm = () => {
           type="text"
           id="technologies"
           name="technologies"
-          defaultValue="React, Javascript"
+          defaultValue={editMode ? editInfo.technologies : "React, Javascript"}
         ></input>
       </div>
       <div>
@@ -25,10 +27,9 @@ const ProjectsForm = () => {
           type="text"
           id="description"
           name="description"
-          defaultValue=""
+          defaultValue={editMode ? editInfo.description : ""}
         ></textarea>
       </div>
-      <button type="submit">Submit</button>{" "}
     </>
   );
 };

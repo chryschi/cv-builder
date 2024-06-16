@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
+import EducationForm from "./EducationForm";
+import ProjectsForm from "./ProjectsForm";
+import PracticalExpForm from "./PracticalExpForm";
+import SkillsForm from "./SkillsForm";
 
 const Form = ({
   infoHandler,
@@ -9,13 +13,49 @@ const Form = ({
   content,
   singleInfo,
   deleteHandler,
+  editHandler,
 }) => {
   const [dropped, setDropped] = useState(false);
   const [createMode, setCreateMode] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [currentEditInfo, setCurrentEditInfo] = useState({});
+
+  const cancelFormSubmission = () => {
+    setEditMode(false);
+    setCreateMode(false);
+  };
+
+  const formComponents = [
+    <EducationForm editInfo={currentEditInfo} editMode={editMode} key={0} />,
+
+    <ProjectsForm editInfo={currentEditInfo} editMode={editMode} key={1} />,
+
+    <PracticalExpForm editInfo={currentEditInfo} editMode={editMode} key={2} />,
+
+    <SkillsForm editInfo={currentEditInfo} editMode={editMode} key={3} />,
+  ];
 
   const infoHandle = (e) => {
     infoHandler(e);
     setCreateMode(!createMode);
+  };
+
+  const openEditor = (index) => {
+    setEditMode(true);
+    setCreateMode(false);
+
+    const infoCopy = [...info];
+    console.log(infoCopy);
+    const bulletpointInfo = infoCopy.filter(
+      (station) => station.index === index
+    )[0];
+    console.log(bulletpointInfo);
+    setCurrentEditInfo(bulletpointInfo);
+  };
+
+  const submitEdit = (event, id, index) => {
+    editHandler(event, id, index);
+    setEditMode(false);
   };
 
   return (
@@ -52,7 +92,10 @@ const Form = ({
                             delete_forever
                           </span>
                         </button>
-                        <button className="edit">
+                        <button
+                          className="edit"
+                          onClick={() => openEditor(station.index)}
+                        >
                           <span className="material-symbols-outlined">
                             edit
                           </span>
@@ -72,23 +115,39 @@ const Form = ({
                   ))}
                 </div>
               )}
-          <form onSubmit={(e) => infoHandle(e)}>
-            {singleInfo ? null : !createMode ? (
-              <button
-                className="add-button"
-                onClick={() => setCreateMode(!createMode)}
-              >
-                {content.newPointText}
-                <span className="material-symbols-outlined">add</span>
-              </button>
-            ) : null}
 
-            {singleInfo
-              ? content.component
-              : createMode
-              ? content.component
-              : null}
-          </form>
+          {singleInfo ? null : !createMode && !editMode ? (
+            <button
+              className="add-button"
+              onClick={() => setCreateMode(!createMode)}
+            >
+              {content.newPointText}
+              <span className="material-symbols-outlined">add</span>
+            </button>
+          ) : null}
+
+          {!createMode && !editMode && !singleInfo ? null : (
+            <form
+              onSubmit={
+                createMode || singleInfo
+                  ? (e) => infoHandle(e)
+                  : (e) =>
+                      submitEdit(e, currentEditInfo.id, currentEditInfo.index)
+              }
+            >
+              {singleInfo
+                ? content.component
+                : formComponents[content.componentId]}
+
+              <button type="submit">
+                {"Submit " + (editMode ? "Changes" : "")}
+              </button>
+
+              <button type="button" onClick={cancelFormSubmission}>
+                Cancel
+              </button>
+            </form>
+          )}
         </div>
       ) : null}
     </section>
