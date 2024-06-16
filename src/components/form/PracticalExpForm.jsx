@@ -28,7 +28,7 @@ const PracticalExpForm = () => {
           defaultValue=""
         ></textarea>
       </div>
-      <div>
+      <p>
         <div>
           <label htmlFor="startDate">Beginn</label>
           <input type="text" id="startDate" name="startDate"></input>
@@ -37,7 +37,7 @@ const PracticalExpForm = () => {
           <label htmlFor="endDate">Ende</label>
           <input type="text" id="endDate" name="endDate"></input>
         </div>
-      </div>
+      </p>
       <button type="submit">Submit</button>{" "}
     </>
   );

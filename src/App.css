@@ -122,6 +122,45 @@ form div {
   display: flex;
   flex-direction: column;
   margin-bottom: 5px;
+  padding: 0.2em 0.4em;
+
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: border-color 0.25s;
+}
+
+form div:hover {
+  border-color: rgb(141, 141, 141);
+}
+
+form div:has(:focus) {
+  background-color: #2b2b2b;
+  border-color: rgb(141, 141, 141);
+}
+
+form p {
+  display: flex;
+  gap: 20px;
+}
+
+label {
+  font-size: 0.8em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input,
+textarea {
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 0;
+
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
 }
 
 .add-button {
@@ -145,27 +184,7 @@ form div {
   margin-left: auto;
 }
 
-input,
-textarea {
-  border: 2px solid transparent;
-  border-radius: 5px;
-  background-color: transparent;
-  padding: 0.4em 0.8em;
-  transition: border-color 0.25s;
-}
-
-input:hover,
-textarea:hover {
-  border-color: rgb(141, 141, 141);
-}
-
-input:focus,
-textarea:focus {
-  border-color: rgb(141, 141, 141);
-
-  outline: none;
-  background-color: #2b2b2b;
-}
+/* CV styling */
 
 .cv {
   min-width: 800px;
