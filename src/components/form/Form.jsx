@@ -5,6 +5,7 @@ import EducationForm from "./EducationForm";
 import ProjectsForm from "./ProjectsForm";
 import PracticalExpForm from "./PracticalExpForm";
 import SkillsForm from "./SkillsForm";
+import IconButton from "../IconButton";
 
 const Form = ({
   infoHandler,
@@ -14,11 +15,13 @@ const Form = ({
   singleInfo,
   deleteHandler,
   editHandler,
+  sectionVisibilityHandler,
 }) => {
   const [dropped, setDropped] = useState(false);
   const [createMode, setCreateMode] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [currentEditInfo, setCurrentEditInfo] = useState({});
+  const [visible, setVisible] = useState(true);
 
   const cancelFormSubmission = () => {
     setEditMode(false);
@@ -58,18 +61,27 @@ const Form = ({
     setEditMode(false);
   };
 
+  const toggleVisibility = () => {
+    sectionVisibilityHandler(content.componentId);
+    setVisible(!visible);
+  };
+
   return (
     <section>
       <h2 className="drop-header">
-        <button className="drop-button" onClick={() => setDropped(!dropped)}>
-          <span className="material-symbols-outlined">
-            {dropped ? "keyboard_arrow_down" : "keyboard_arrow_right"}
-          </span>
+        <IconButton
+          buttonClass="drop-button"
+          onClick={() => setDropped(!dropped)}
+          iconCode={dropped ? "keyboard_arrow_down" : "keyboard_arrow_right"}
+        >
           {content.title}
-        </button>
-        <button className="visibility">
-          <span className="material-symbols-outlined">visibility</span>
-        </button>
+        </IconButton>
+
+        <IconButton
+          buttonClass="visibility"
+          iconCode={visible ? "visibility" : "visibility_off"}
+          onClick={toggleVisibility}
+        />
       </h2>
 
       {dropped ? (
@@ -82,34 +94,29 @@ const Form = ({
                     <p key={station.index}>
                       {station[content.displayEntry]}
                       <div className="buttons">
-                        <button
-                          className="delete"
+                        <IconButton
+                          buttonClass="delete"
+                          iconCode="delete_forever"
                           onClick={() =>
                             deleteHandler(station.id, station.index)
                           }
-                        >
-                          <span className="material-symbols-outlined">
-                            delete_forever
-                          </span>
-                        </button>
-                        <button
-                          className="edit"
+                        />
+
+                        <IconButton
+                          buttonClass="edit"
+                          iconCode="edit"
                           onClick={() => openEditor(station.index)}
-                        >
-                          <span className="material-symbols-outlined">
-                            edit
-                          </span>
-                        </button>
-                        <button
-                          className="visibility"
+                        />
+
+                        <IconButton
+                          buttonClass="visibility"
+                          iconCode={
+                            station.visible ? "visibility" : "visibility_off"
+                          }
                           onClick={() =>
                             visibilityHandler(station.id, station.index)
                           }
-                        >
-                          <span className="material-symbols-outlined">
-                            {station.visible ? "visibility" : "visibility_off"}
-                          </span>
-                        </button>
+                        />
                       </div>
                     </p>
                   ))}

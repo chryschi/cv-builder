@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 
-const ProjectsCV = (props) => {
-  return (
+const ProjectsCV = ({ info, visible }) => {
+  return visible ? (
     <section>
       <h3>Projekte</h3>
 
-      {props.info.map((station, idx) => {
+      {info.map((station, idx) => {
         if (station.visible === true) {
           return (
             <div className="education-point" key={idx}>
@@ -21,6 +21,8 @@ const ProjectsCV = (props) => {
         }
       })}
     </section>
+  ) : (
+    <></>
   );
 };
 

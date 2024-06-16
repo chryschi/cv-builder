@@ -17,6 +17,14 @@ function App() {
   const [careerInfo, setCareerInfo] = useState([]);
   const [skillInfo, setSkillInfo] = useState([]);
   const [signatureInfo, setSignatureInfo] = useState({});
+  const [sectionVisibility, setSectionVisibility] = useState([
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+  ]);
 
   const infoList = [educationInfo, projectsInfo, careerInfo, skillInfo];
   const setInfoFnc = [
@@ -133,6 +141,13 @@ function App() {
     setInfoFnc[id](newInfo);
   };
 
+  const toggleSectionVisibility = (id) => {
+    const visibilityArray = [...sectionVisibility];
+
+    visibilityArray[id] = !visibilityArray[id];
+    setSectionVisibility(visibilityArray);
+  };
+
   return (
     <>
       <div className="sidebar">
@@ -149,9 +164,10 @@ function App() {
                 newPointText: "",
                 displayEntry: "",
                 component: <PersonalInfoForm />,
-                componentId: null,
+                componentId: 5,
               }}
               singleInfo={true}
+              sectionVisibilityHandler={toggleSectionVisibility}
             />
 
             <Form
@@ -168,6 +184,7 @@ function App() {
               singleInfo={false}
               deleteHandler={deleteBulletpoint}
               editHandler={updateInfo}
+              sectionVisibilityHandler={toggleSectionVisibility}
             />
             <Form
               infoHandler={updateIterableInfo}
@@ -183,6 +200,7 @@ function App() {
               singleInfo={false}
               deleteHandler={deleteBulletpoint}
               editHandler={updateInfo}
+              sectionVisibilityHandler={toggleSectionVisibility}
             />
             <Form
               infoHandler={updateIterableInfo}
@@ -198,6 +216,7 @@ function App() {
               singleInfo={false}
               deleteHandler={deleteBulletpoint}
               editHandler={updateInfo}
+              sectionVisibilityHandler={toggleSectionVisibility}
             />
 
             <Form
@@ -214,6 +233,7 @@ function App() {
               singleInfo={false}
               deleteHandler={deleteBulletpoint}
               editHandler={updateInfo}
+              sectionVisibilityHandler={toggleSectionVisibility}
             />
             <Form
               infoHandler={updateNoniterableInfo}
@@ -223,9 +243,10 @@ function App() {
                 newPointText: "",
                 displayEntry: "",
                 component: <SignatureForm />,
-                componentId: null,
+                componentId: 4,
               }}
               singleInfo={true}
+              sectionVisibilityHandler={toggleSectionVisibility}
             />
           </div>
         </main>
@@ -235,12 +256,12 @@ function App() {
           <h2>{personalInfo.fullName}</h2>
           <p>Lebenslauf</p>
         </header>
-        <PersonalInfoCV info={personalInfo} />
-        <EducationInfoCV info={educationInfo} />
-        <CareerInfoCV info={careerInfo} />
-        <ProjectsCV info={projectsInfo} />
-        <SkillsCV info={skillInfo} />
-        <SignatureCV info={signatureInfo} />
+        <PersonalInfoCV info={personalInfo} visible={sectionVisibility[5]} />
+        <EducationInfoCV info={educationInfo} visible={sectionVisibility[0]} />
+        <CareerInfoCV info={careerInfo} visible={sectionVisibility[2]} />
+        <ProjectsCV info={projectsInfo} visible={sectionVisibility[1]} />
+        <SkillsCV info={skillInfo} visible={sectionVisibility[3]} />
+        <SignatureCV info={signatureInfo} visible={sectionVisibility[4]} />
       </article>
     </>
   );

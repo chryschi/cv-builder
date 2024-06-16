@@ -1,16 +1,18 @@
 /* eslint-disable react/prop-types */
 
-const PersonalInfoCV = (props) => {
-  return (
+const PersonalInfoCV = ({ info, visible }) => {
+  return visible ? (
     <section>
       <h3>Persönliche Daten</h3>
       <ul>
-        <li>Geburtsdatum {props.info.birthday}</li>
-        <li>Adresse {props.info.adress}</li>
-        <li>Telefon {props.info.phone}</li>
-        <li>Email {props.info.email}</li>
+        <li>Geburtsdatum {info.birthday}</li>
+        <li>Adresse {info.adress}</li>
+        <li>Telefon {info.phone}</li>
+        <li>Email {info.email}</li>
       </ul>
     </section>
+  ) : (
+    <></>
   );
 };
 

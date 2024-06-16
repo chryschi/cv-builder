@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 
-const SignatureCV = (props) => {
-  return (
+const SignatureCV = ({ info, visible }) => {
+  return visible ? (
     <section>
       <div className="education-point">
         <div>
-          <p>{`${props.info.location}, den ${props.info.date}`}</p>
+          <p>{`${info.location}, den ${info.date}`}</p>
         </div>
       </div>
     </section>
+  ) : (
+    <></>
   );
 };
 
