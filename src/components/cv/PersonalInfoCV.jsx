@@ -5,7 +5,7 @@ import MaterialIcon from "../MaterialIcon";
 const PersonalInfoCV = ({ info, visible }) => {
   return visible ? (
     <section>
-      {/* <h3>Persönliche Daten</h3> */}
+      {/* <h2>Persönliche Daten</h2> */}
       <ul>
         <li>
           <MaterialIcon iconCode={"cake"} /> {info.birthday}

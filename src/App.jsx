@@ -255,7 +255,7 @@ function App() {
       <article className="cv">
         <header>
           <div className="photo"></div>
-          <h2>{personalInfo.fullName}</h2>
+          <h1>{personalInfo.fullName}</h1>
           <p>Lebenslauf</p>
         </header>
         <div className="cv-main">

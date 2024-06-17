@@ -3,7 +3,7 @@
 const SkillsCV = ({ info, visible }) => {
   return visible ? (
     <section>
-      <h3>Kenntnisse und Interessen</h3>
+      <h2>Kenntnisse und Interessen</h2>
 
       {info.map((station, idx) => {
         if (station.visible === true) {
