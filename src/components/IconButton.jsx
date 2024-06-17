@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 
+import MaterialIcon from "./MaterialIcon";
+
 const IconButton = ({ iconCode, onClick, children, buttonClass }) => {
   return (
     <button className={buttonClass} onClick={onClick}>
-      <span className="material-symbols-outlined">{iconCode}</span>
+      <MaterialIcon iconCode={iconCode} />
       {children}
     </button>
   );

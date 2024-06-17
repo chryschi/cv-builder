@@ -31,7 +31,6 @@ main {
 /* CV styling */
 
 .cv {
-  min-width: 800px;
   flex: 1 auto;
   background-color: white;
 }

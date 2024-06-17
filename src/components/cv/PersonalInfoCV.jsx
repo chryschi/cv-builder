@@ -1,14 +1,24 @@
 /* eslint-disable react/prop-types */
 
+import MaterialIcon from "../MaterialIcon";
+
 const PersonalInfoCV = ({ info, visible }) => {
   return visible ? (
     <section>
-      <h3>Persönliche Daten</h3>
+      {/* <h3>Persönliche Daten</h3> */}
       <ul>
-        <li>Geburtsdatum {info.birthday}</li>
-        <li>Adresse {info.adress}</li>
-        <li>Telefon {info.phone}</li>
-        <li>Email {info.email}</li>
+        <li>
+          <MaterialIcon iconCode={"cake"} /> {info.birthday}
+        </li>
+        <li>
+          <MaterialIcon iconCode={"house"} /> {info.adress}
+        </li>
+        <li>
+          <MaterialIcon iconCode={"call"} /> {info.phone}
+        </li>
+        <li>
+          <MaterialIcon iconCode={"mail"} /> {info.email}
+        </li>
       </ul>
     </section>
   ) : (

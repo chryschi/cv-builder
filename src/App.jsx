@@ -9,6 +9,7 @@ import ProjectsCV from "./components/cv/ProjectsCV";
 import SignatureCV from "./components/cv/SignatureCV";
 import SignatureForm from "./components/form/SignatureForm";
 import PersonalInfoForm from "./components/form/PersonalInfoForm";
+import "./components/cv/CVOwnDesign.css";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -253,15 +254,21 @@ function App() {
       </div>
       <article className="cv">
         <header>
+          <div className="photo"></div>
           <h2>{personalInfo.fullName}</h2>
           <p>Lebenslauf</p>
         </header>
-        <PersonalInfoCV info={personalInfo} visible={sectionVisibility[5]} />
-        <EducationInfoCV info={educationInfo} visible={sectionVisibility[0]} />
-        <CareerInfoCV info={careerInfo} visible={sectionVisibility[2]} />
-        <ProjectsCV info={projectsInfo} visible={sectionVisibility[1]} />
-        <SkillsCV info={skillInfo} visible={sectionVisibility[3]} />
-        <SignatureCV info={signatureInfo} visible={sectionVisibility[4]} />
+        <div className="cv-main">
+          <PersonalInfoCV info={personalInfo} visible={sectionVisibility[5]} />
+          <EducationInfoCV
+            info={educationInfo}
+            visible={sectionVisibility[0]}
+          />
+          <SkillsCV info={skillInfo} visible={sectionVisibility[3]} />
+          <ProjectsCV info={projectsInfo} visible={sectionVisibility[1]} />
+          <CareerInfoCV info={careerInfo} visible={sectionVisibility[2]} />
+          <SignatureCV info={signatureInfo} visible={sectionVisibility[4]} />
+        </div>
       </article>
     </>
   );
