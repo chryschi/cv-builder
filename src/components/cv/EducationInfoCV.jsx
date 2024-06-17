@@ -15,8 +15,11 @@ const EducationInfoCV = ({ info, visible }) => {
                 </p>
               </div>
               <div>
-                <p>{`${station.university}(${station.location})`}</p>
                 <p>{station.subject}</p>
+                <p>
+                  {`${station.university}` +
+                    (station.location !== "" ? `, ${station.location}` : "")}
+                </p>
               </div>
             </div>
           );

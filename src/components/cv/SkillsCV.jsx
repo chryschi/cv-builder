@@ -9,12 +9,9 @@ const SkillsCV = ({ info, visible }) => {
         if (station.visible === true) {
           return (
             <div className="skill-point" key={idx}>
-              <div>
-                <p>{station.skill}</p>
-              </div>
-              <div>
-                <p>{station.level}</p>
-              </div>
+              <p>{station.skill}</p>
+
+              <p>{station.level}</p>
             </div>
           );
         }
