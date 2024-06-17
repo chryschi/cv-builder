@@ -155,7 +155,7 @@ function App() {
           <h1>Lebenslauf Generator</h1>
         </header>
         <main>
-          <div className="form">
+          <div className="forms-container">
             <Form
               infoHandler={updateNoniterableInfo}
               info={personalInfo}

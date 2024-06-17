@@ -6,6 +6,7 @@ import ProjectsForm from "./ProjectsForm";
 import PracticalExpForm from "./PracticalExpForm";
 import SkillsForm from "./SkillsForm";
 import IconButton from "../IconButton";
+import "./Form.css";
 
 const Form = ({
   infoHandler,
@@ -124,13 +125,15 @@ const Form = ({
               )}
 
           {singleInfo ? null : !createMode && !editMode ? (
-            <button
-              className="add-button"
-              onClick={() => setCreateMode(!createMode)}
-            >
-              {content.newPointText}
-              <span className="material-symbols-outlined">add</span>
-            </button>
+            <div className="add-button-container">
+              <button
+                className="add-button"
+                onClick={() => setCreateMode(!createMode)}
+              >
+                {content.newPointText}
+                <span className="material-symbols-outlined">add</span>
+              </button>
+            </div>
           ) : null}
 
           {!createMode && !editMode && !singleInfo ? null : (
@@ -145,14 +148,18 @@ const Form = ({
               {singleInfo
                 ? content.component
                 : formComponents[content.componentId]}
-
-              <button type="submit">
-                {"Submit " + (editMode ? "Changes" : "")}
-              </button>
-
-              <button type="button" onClick={cancelFormSubmission}>
-                Cancel
-              </button>
+              <div className="button-container">
+                <button
+                  className="cancel"
+                  type="button"
+                  onClick={cancelFormSubmission}
+                >
+                  Cancel
+                </button>
+                <button className="submit" type="submit">
+                  {"Submit " + (editMode ? "Changes" : "")}
+                </button>
+              </div>
             </form>
           )}
         </div>
