@@ -2,11 +2,18 @@
 
 import MaterialIcon from "./MaterialIcon";
 
-const IconButton = ({ iconCode, onClick, children, buttonClass }) => {
+const IconButton = ({
+  iconCode,
+  onClick,
+  childrenBeforeIcon = false,
+  children,
+  buttonClass,
+}) => {
   return (
     <button className={buttonClass} onClick={onClick}>
+      {childrenBeforeIcon ? children : null}
       <MaterialIcon iconCode={iconCode} />
-      {children}
+      {!childrenBeforeIcon ? children : null}
     </button>
   );
 };

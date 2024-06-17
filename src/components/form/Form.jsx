@@ -126,13 +126,14 @@ const Form = ({
 
           {singleInfo ? null : !createMode && !editMode ? (
             <div className="add-button-container">
-              <button
-                className="add-button"
+              <IconButton
+                buttonClass="add-button"
                 onClick={() => setCreateMode(!createMode)}
+                childrenBeforeIcon={true}
+                iconCode={"add"}
               >
                 {content.newPointText}
-                <span className="material-symbols-outlined">add</span>
-              </button>
+              </IconButton>
             </div>
           ) : null}
 
