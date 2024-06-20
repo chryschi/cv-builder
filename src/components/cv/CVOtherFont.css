@@ -38,4 +38,8 @@
   #root {
     padding: 0 !important;
   }
+
+  .cv {
+    transform: scale(1) !important;
+  }
 }

@@ -10,6 +10,8 @@
   flex-direction: row;
   justify-content: left;
   flex-wrap: nowrap;
+
+  scrollbar-color: #525151 #292929;
 }
 
 header {
@@ -24,11 +26,22 @@ header {
 
 main {
   overflow-y: scroll;
-  scrollbar-color: #525151 #292929;
   flex: 1 auto;
 }
 
+.bulletpoint-container li {
+  display: flex;
+}
+
 /* CV styling */
+
+.cv-container {
+  display: flex;
+  justify-content: center;
+
+  overflow: auto;
+  background-color: #1b1b1b;
+}
 
 .cv {
   flex: 1 auto;

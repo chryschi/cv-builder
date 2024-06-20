@@ -253,26 +253,31 @@ function App() {
           </div>
         </main>
       </div>
-      <article className="cv">
-        <header>
-          <img className="photo"></img>
-          <div className="title">
-            <h1>{personalInfo.fullName}</h1>
-            <p>Lebenslauf</p>
+      <div className="cv-container">
+        <article className="cv">
+          <header>
+            <img className="photo"></img>
+            <div className="title">
+              <h1>{personalInfo.fullName}</h1>
+              <p>Lebenslauf</p>
+            </div>
+          </header>
+          <div className="cv-main">
+            <PersonalInfoCV
+              info={personalInfo}
+              visible={sectionVisibility[5]}
+            />
+            <EducationInfoCV
+              info={educationInfo}
+              visible={sectionVisibility[0]}
+            />
+            <SkillsCV info={skillInfo} visible={sectionVisibility[3]} />
+            <ProjectsCV info={projectsInfo} visible={sectionVisibility[1]} />
+            <CareerInfoCV info={careerInfo} visible={sectionVisibility[2]} />
+            <SignatureCV info={signatureInfo} visible={sectionVisibility[4]} />
           </div>
-        </header>
-        <div className="cv-main">
-          <PersonalInfoCV info={personalInfo} visible={sectionVisibility[5]} />
-          <EducationInfoCV
-            info={educationInfo}
-            visible={sectionVisibility[0]}
-          />
-          <SkillsCV info={skillInfo} visible={sectionVisibility[3]} />
-          <ProjectsCV info={projectsInfo} visible={sectionVisibility[1]} />
-          <CareerInfoCV info={careerInfo} visible={sectionVisibility[2]} />
-          <SignatureCV info={signatureInfo} visible={sectionVisibility[4]} />
-        </div>
-      </article>
+        </article>
+      </div>
     </>
   );
 }
