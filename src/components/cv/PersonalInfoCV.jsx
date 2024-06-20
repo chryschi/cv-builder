@@ -3,15 +3,27 @@
 import MaterialIcon from "../MaterialIcon";
 
 const PersonalInfoCV = ({ info, visible }) => {
+  let adress;
+  if (info.adress !== undefined) {
+    adress = info.adress.split(",");
+  }
+
   return visible ? (
-    <section>
+    <section className="left-col">
       {/* <h2>Persönliche Daten</h2> */}
       <ul>
         <li>
           <MaterialIcon iconCode={"cake"} /> {info.birthday}
         </li>
         <li>
-          <MaterialIcon iconCode={"house"} /> {info.adress}
+          <MaterialIcon iconCode={"house"} />{" "}
+          {adress === undefined ? null : adress.length === 1 ? (
+            <>{adress[0]}</>
+          ) : (
+            <>
+              {adress[0]}, <br /> {adress[1]}
+            </>
+          )}
         </li>
         <li>
           <MaterialIcon iconCode={"call"} /> {info.phone}

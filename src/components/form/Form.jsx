@@ -90,9 +90,9 @@ const Form = ({
           {singleInfo
             ? null
             : info.length !== 0 && (
-                <div className="bulletpoint-container">
+                <ul className="bulletpoint-container">
                   {info.map((station) => (
-                    <p key={station.index}>
+                    <li key={station.index}>
                       {station[content.displayEntry]}
                       <div className="buttons">
                         <IconButton
@@ -119,9 +119,9 @@ const Form = ({
                           }
                         />
                       </div>
-                    </p>
+                    </li>
                   ))}
-                </div>
+                </ul>
               )}
 
           {singleInfo ? null : !createMode && !editMode ? (

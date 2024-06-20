@@ -2,7 +2,7 @@
 
 const EducationInfoCV = ({ info, visible }) => {
   return visible ? (
-    <section>
+    <section className="left-col">
       <h2>Ausbildung</h2>
 
       {info.map((station, idx) => {

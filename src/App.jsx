@@ -10,6 +10,7 @@ import SignatureCV from "./components/cv/SignatureCV";
 import SignatureForm from "./components/form/SignatureForm";
 import PersonalInfoForm from "./components/form/PersonalInfoForm";
 import "./components/cv/CVOwnDesign.css";
+import "./components/cv/CVOtherFont.css";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -254,9 +255,11 @@ function App() {
       </div>
       <article className="cv">
         <header>
-          <div className="photo"></div>
-          <h1>{personalInfo.fullName}</h1>
-          <p>Lebenslauf</p>
+          <img className="photo"></img>
+          <div className="title">
+            <h1>{personalInfo.fullName}</h1>
+            <p>Lebenslauf</p>
+          </div>
         </header>
         <div className="cv-main">
           <PersonalInfoCV info={personalInfo} visible={sectionVisibility[5]} />

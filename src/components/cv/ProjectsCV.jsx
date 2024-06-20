@@ -12,7 +12,9 @@ const ProjectsCV = ({ info, visible }) => {
               <h3 className="project-title">{station.project}</h3>
 
               <div>
-                <p>{station.technologies}</p>
+                <p>
+                  {station.technologies.replace(/\s/g, "").split(",").join("|")}
+                </p>
                 <p>{station.description}</p>
               </div>
             </div>

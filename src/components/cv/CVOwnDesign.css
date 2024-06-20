@@ -4,13 +4,42 @@
 
   width: 210mm;
   height: 297mm;
+  padding: 15mm 10mm;
 
-  font-family: "";
+  font-family: "Lekton", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 11pt;
+
+  overflow: hidden;
+}
+
+.cv header {
+  display: flex;
+  justify-content: center;
+  gap: 10mm;
+  align-items: center;
+
+  padding: 0mm;
+  margin-bottom: 15mm;
+
+  color: #595959;
+}
+
+.cv header p {
+  font-size: 20pt;
+  letter-spacing: 10pt;
+  margin-top: 5mm;
+}
+
+.cv header .title {
+  width: 60%;
+  color: #4f4f4f;
 }
 
 .photo {
-  width: 50mm;
-  height: 50mm;
+  width: 60mm;
+  height: 60mm;
   background-color: red;
   border-radius: 50%;
 }
@@ -19,6 +48,19 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  max-height: 80%;
+
+  align-items: start;
+  gap: 10mm 10mm;
+}
+
+.cv section {
+  margin: 0;
+  width: 130mm;
+}
+
+section.left-col {
+  width: 60mm;
 }
 
 .cv li {
@@ -31,20 +73,58 @@
   margin-right: 3mm;
 }
 
-.cv h1 {
+.cv h1,
+.cv h3 {
   font-family: "Lexend", sans-serif;
+  font-size: 36pt;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
 }
 
-h2 h3 {
+.cv h2 {
+  font-family: "Lexend Giga", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
   font-size: 16pt;
+
+  margin-bottom: 4mm;
 }
 
-h4 {
-  font-size: 11pt;
+.cv h3 {
+  font-size: 12pt;
+  text-transform: capitalize;
+}
+
+.cv h1,
+.cv h2 {
+  text-transform: uppercase;
+}
+/* Skills Section */
+
+.cv .skill-point {
+  display: flex;
+}
+
+.cv .skill-point p:first-child {
+  width: 20mm;
+}
+
+.cv .education-point {
+  margin-bottom: 3mm;
 }
 
 @media print {
   .sidebar {
     display: none;
+  }
+
+  @page {
+    margin: 0 !important;
+  }
+
+  #root {
+    padding: 0 !important;
   }
 }
