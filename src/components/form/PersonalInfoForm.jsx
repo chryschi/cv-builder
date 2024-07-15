@@ -30,11 +30,15 @@ const PersonalInfoForm = () => {
       </div>
       <div>
         <label htmlFor="phone">Telefon</label>
-        <input type="number" id="phone" name="phone"></input>
+        <input type="tel" id="phone" name="phone"></input>
       </div>
       <div>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email"></input>
+      </div>
+      <div>
+        <label htmlFor="website">Website</label>
+        <input type="url" id="website" name="website"></input>
       </div>
     </>
   );

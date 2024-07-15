@@ -41,6 +41,9 @@ const PersonalInfoCV = ({ info, visible }) => {
         <li>
           <MaterialIcon iconCode={"mail"} /> {info.email}
         </li>
+        <li>
+          <MaterialIcon iconCode={"language"} /> {info.website}
+        </li>
       </ul>
     </section>
   ) : (
