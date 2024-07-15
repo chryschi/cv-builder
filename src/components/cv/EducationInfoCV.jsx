@@ -9,18 +9,14 @@ const EducationInfoCV = ({ info, visible }) => {
         if (station.visible === true) {
           return (
             <div className="education-point" key={idx}>
-              <div>
-                <p>
-                  {station.startDate}-{station.endDate}
-                </p>
-              </div>
-              <div>
-                <p>{station.subject}</p>
-                <p>
-                  {`${station.university}` +
-                    (station.location !== "" ? `, ${station.location}` : "")}
-                </p>
-              </div>
+              <p>{station.subject}</p>
+              <p>
+                {`${station.university}` +
+                  (station.location !== "" ? `, ${station.location}` : "")}
+              </p>
+              <p>
+                {station.startDate}-{station.endDate}
+              </p>
             </div>
           );
         }
