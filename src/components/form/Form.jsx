@@ -149,9 +149,10 @@ const Form = ({
               {singleInfo
                 ? content.component
                 : formComponents[content.componentId]}
+
               <div className="button-container">
                 <button
-                  className="cancel"
+                  className={"cancel " + singleInfo ? "button-invisible" : null}
                   type="button"
                   onClick={cancelFormSubmission}
                 >
