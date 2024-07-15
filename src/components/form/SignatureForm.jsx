@@ -12,7 +12,12 @@ const SignatureForm = () => {
       </div>
       <div>
         <label htmlFor="date">Datum</label>
-        <input type="date" id="date" name="date"></input>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          defaultValue={"2000-01-19"}
+        ></input>
       </div>
     </>
   );

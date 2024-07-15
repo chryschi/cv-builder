@@ -12,7 +12,12 @@ const PersonalInfoForm = () => {
       </div>
       <div>
         <label htmlFor="birthday">Geburtsdatum</label>
-        <input type="date" id="birthday" name="birthday"></input>
+        <input
+          type="date"
+          id="birthday"
+          name="birthday"
+          defaultValue={"2000-01-19"}
+        ></input>
       </div>
       <div>
         <label htmlFor="adress">Adresse</label>
