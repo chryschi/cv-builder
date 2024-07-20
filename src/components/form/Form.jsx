@@ -5,6 +5,7 @@ import EducationForm from "./EducationForm";
 import ProjectsForm from "./ProjectsForm";
 import PracticalExpForm from "./PracticalExpForm";
 import SkillsForm from "./SkillsForm";
+import InterestsForm from "./InterestsForm";
 import IconButton from "../IconButton";
 import "./Form.css";
 
@@ -37,6 +38,8 @@ const Form = ({
     <PracticalExpForm editInfo={currentEditInfo} editMode={editMode} key={2} />,
 
     <SkillsForm editInfo={currentEditInfo} editMode={editMode} key={3} />,
+
+    <InterestsForm editInfo={currentEditInfo} editMode={editMode} key={4} />,
   ];
 
   const infoHandle = (e) => {

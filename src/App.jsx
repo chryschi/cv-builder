@@ -11,6 +11,7 @@ import SignatureForm from "./components/form/SignatureForm";
 import PersonalInfoForm from "./components/form/PersonalInfoForm";
 import "./components/cv/CVOwnDesign.css";
 import "./components/cv/CVOtherFont.css";
+import InterestsCV from "./components/cv/InterestsCV";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({});
@@ -18,6 +19,8 @@ function App() {
   const [projectsInfo, setProjectsInfo] = useState([]);
   const [careerInfo, setCareerInfo] = useState([]);
   const [skillInfo, setSkillInfo] = useState([]);
+  const [interestsInfo, setInterestsInfo] = useState([]);
+
   const [signatureInfo, setSignatureInfo] = useState({});
   const [sectionVisibility, setSectionVisibility] = useState([
     true,
@@ -26,16 +29,24 @@ function App() {
     true,
     true,
     true,
+    true,
   ]);
 
-  const infoList = [educationInfo, projectsInfo, careerInfo, skillInfo];
+  const infoList = [
+    educationInfo,
+    projectsInfo,
+    careerInfo,
+    skillInfo,
+    interestsInfo,
+  ];
   const setInfoFnc = [
     setEducationInfo,
     setProjectsInfo,
     setCareerInfo,
     setSkillInfo,
+    setInterestsInfo,
   ];
-  const tagList = ["subject", "project", "position", "skill"];
+  const tagList = ["subject", "project", "position", "skill", "interest"];
 
   const updateNoniterableInfo = (event) => {
     const setInfoFnc = [setPersonalInfo, setSignatureInfo];
@@ -166,7 +177,7 @@ function App() {
                 newPointText: "",
                 displayEntry: "",
                 component: <PersonalInfoForm />,
-                componentId: 5,
+                componentId: "",
               }}
               singleInfo={true}
               sectionVisibilityHandler={toggleSectionVisibility}
@@ -188,6 +199,7 @@ function App() {
               editHandler={updateInfo}
               sectionVisibilityHandler={toggleSectionVisibility}
             />
+
             <Form
               infoHandler={updateIterableInfo}
               info={careerInfo}
@@ -204,6 +216,7 @@ function App() {
               editHandler={updateInfo}
               sectionVisibilityHandler={toggleSectionVisibility}
             />
+
             <Form
               infoHandler={updateIterableInfo}
               info={projectsInfo}
@@ -237,6 +250,24 @@ function App() {
               editHandler={updateInfo}
               sectionVisibilityHandler={toggleSectionVisibility}
             />
+
+            <Form
+              infoHandler={updateIterableInfo}
+              info={interestsInfo}
+              visibilityHandler={toggleVisibility}
+              content={{
+                title: "Interessen",
+                newPointText: "Neues Interesse anlegen",
+                displayEntry: "interest",
+                component: null,
+                componentId: 4,
+              }}
+              singleInfo={false}
+              deleteHandler={deleteBulletpoint}
+              editHandler={updateInfo}
+              sectionVisibilityHandler={toggleSectionVisibility}
+            />
+
             <Form
               infoHandler={updateNoniterableInfo}
               info={signatureInfo}
@@ -245,7 +276,7 @@ function App() {
                 newPointText: "",
                 displayEntry: "",
                 component: <SignatureForm />,
-                componentId: 4,
+                componentId: "",
               }}
               singleInfo={true}
               sectionVisibilityHandler={toggleSectionVisibility}
@@ -272,6 +303,7 @@ function App() {
               visible={sectionVisibility[0]}
             />
             <SkillsCV info={skillInfo} visible={sectionVisibility[3]} />
+            <InterestsCV info={interestsInfo} visible={sectionVisibility[5]} />
             <ProjectsCV info={projectsInfo} visible={sectionVisibility[1]} />
             <CareerInfoCV info={careerInfo} visible={sectionVisibility[2]} />
             <SignatureCV info={signatureInfo} visible={sectionVisibility[4]} />
