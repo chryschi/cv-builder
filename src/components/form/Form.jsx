@@ -155,7 +155,7 @@ const Form = ({
 
               <div className="button-container">
                 <button
-                  className={"cancel " + singleInfo ? "button-invisible" : null}
+                  className={"cancel " + (singleInfo ? "button-invisible" : "")}
                   type="button"
                   onClick={cancelFormSubmission}
                 >
