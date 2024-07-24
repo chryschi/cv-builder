@@ -3,7 +3,6 @@
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   display: flex;
@@ -16,6 +15,10 @@
 
 header {
   padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .sidebar {
@@ -41,11 +44,6 @@ main {
 
   overflow: auto;
   background-color: #1b1b1b;
-}
-
-.cv {
-  flex: 1 auto;
-  background-color: white;
 }
 
 .cv ul {

@@ -12,6 +12,7 @@ import PersonalInfoForm from "./components/form/PersonalInfoForm";
 import "./components/cv/CVOwnDesign.css";
 import InterestsCV from "./components/cv/InterestsCV";
 import exampleInfo from "./components/exampleInfo";
+import logo from "./assets/cv-builder-logo.svg";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState(exampleInfo.personal);
@@ -165,6 +166,7 @@ function App() {
     <>
       <div className="sidebar">
         <header>
+          <img height="70px" src={logo} alt="CV-Builder" />
           <h1>Lebenslauf Generator</h1>
         </header>
         <main>
