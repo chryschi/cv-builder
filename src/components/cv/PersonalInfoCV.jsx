@@ -15,11 +15,8 @@ const PersonalInfoCV = ({ info, visible }) => {
     date = new Intl.DateTimeFormat("de-DE").format(birthday);
   }
 
-  // const date = new Date(info.birthday).toString();
-
   return visible ? (
     <section className="left-col">
-      {/* <h2>Persönliche Daten</h2> */}
       <ul>
         <li>
           {info.date === "" ? null : <MaterialIcon iconCode={"cake"} />}

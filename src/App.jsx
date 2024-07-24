@@ -179,7 +179,7 @@ function App() {
                 newPointText: "",
                 displayEntry: "",
                 component: <PersonalInfoForm info={personalInfo} />,
-                componentId: "",
+                componentId: 6,
               }}
               singleInfo={true}
               sectionVisibilityHandler={toggleSectionVisibility}
@@ -278,7 +278,7 @@ function App() {
                 newPointText: "",
                 displayEntry: "",
                 component: <SignatureForm info={signatureInfo} />,
-                componentId: "",
+                componentId: 5,
               }}
               singleInfo={true}
               sectionVisibilityHandler={toggleSectionVisibility}
@@ -297,17 +297,17 @@ function App() {
           <div className="cv-main">
             <PersonalInfoCV
               info={personalInfo}
-              visible={sectionVisibility[5]}
+              visible={sectionVisibility[6]}
             />
             <EducationInfoCV
               info={educationInfo}
               visible={sectionVisibility[0]}
             />
             <SkillsCV info={skillInfo} visible={sectionVisibility[3]} />
-            <InterestsCV info={interestsInfo} visible={sectionVisibility[5]} />
+            <InterestsCV info={interestsInfo} visible={sectionVisibility[4]} />
             <ProjectsCV info={projectsInfo} visible={sectionVisibility[1]} />
             <CareerInfoCV info={careerInfo} visible={sectionVisibility[2]} />
-            <SignatureCV info={signatureInfo} visible={sectionVisibility[4]} />
+            <SignatureCV info={signatureInfo} visible={sectionVisibility[5]} />
           </div>
         </article>
       </div>
