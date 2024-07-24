@@ -22,11 +22,11 @@ const PersonalInfoCV = ({ info, visible }) => {
       {/* <h2>Persönliche Daten</h2> */}
       <ul>
         <li>
-          <MaterialIcon iconCode={"cake"} />
+          {info.date === "" ? null : <MaterialIcon iconCode={"cake"} />}
           {date}
         </li>
         <li>
-          <MaterialIcon iconCode={"house"} />
+          {info.adress === "" ? null : <MaterialIcon iconCode={"house"} />}
           {adress === undefined ? null : adress.length === 1 ? (
             <>{adress[0]}</>
           ) : (
@@ -36,13 +36,16 @@ const PersonalInfoCV = ({ info, visible }) => {
           )}
         </li>
         <li>
-          <MaterialIcon iconCode={"call"} /> {info.phone}
+          {info.phone === "" ? null : <MaterialIcon iconCode={"call"} />}{" "}
+          {info.phone}
         </li>
         <li>
-          <MaterialIcon iconCode={"mail"} /> {info.email}
+          {info.email === "" ? null : <MaterialIcon iconCode={"mail"} />}{" "}
+          {info.email}
         </li>
         <li>
-          <MaterialIcon iconCode={"language"} /> {info.website}
+          {info.website === "" ? null : <MaterialIcon iconCode={"language"} />}
+          {info.website}
         </li>
       </ul>
     </section>
