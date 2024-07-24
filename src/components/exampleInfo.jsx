@@ -107,7 +107,7 @@ const exampleInfo = {
         "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,",
       endDate: "05/2027",
       id: 2,
-      index: 2,
+      index: 3,
       position: "Redaktionsleiterin",
       startDate: "04/2026",
       visible: true,
