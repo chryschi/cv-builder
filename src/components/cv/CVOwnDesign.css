@@ -19,7 +19,7 @@
   font-size: 10pt;
 
   transform: scale(0.9);
-  background-color: rgb(59, 109, 90);
+  background-color: white;
 }
 
 .cv header {
@@ -67,7 +67,7 @@
 
 .cv section {
   margin: 0;
-  width: 130mm;
+  width: 120mm;
 }
 
 section.left-col {
@@ -105,7 +105,6 @@ section.left-col {
 
 .cv h3 {
   font-size: 12pt;
-  text-transform: capitalize;
 }
 
 .cv h2 {
