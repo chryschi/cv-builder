@@ -1,4 +1,6 @@
-const PersonalInfoForm = () => {
+/* eslint-disable react/prop-types */
+
+const PersonalInfoForm = ({ info }) => {
   return (
     <>
       <div>
@@ -7,7 +9,7 @@ const PersonalInfoForm = () => {
           type="text"
           id="fullName"
           name="fullName"
-          defaultValue="Martin"
+          defaultValue={info.fullName}
         ></input>
       </div>
       <div>
@@ -16,7 +18,7 @@ const PersonalInfoForm = () => {
           type="date"
           id="birthday"
           name="birthday"
-          defaultValue={"2000-01-19"}
+          defaultValue={info.birthday}
         ></input>
       </div>
       <div>
@@ -25,20 +27,35 @@ const PersonalInfoForm = () => {
           type="text"
           id="adress"
           name="adress"
-          defaultValue="London"
+          defaultValue={info.adress}
         ></input>
       </div>
       <div>
         <label htmlFor="phone">Telefon</label>
-        <input type="tel" id="phone" name="phone"></input>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          defaultValue={info.phone}
+        ></input>
       </div>
       <div>
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email"></input>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          defaultValue={info.email}
+        ></input>
       </div>
       <div>
         <label htmlFor="website">Website</label>
-        <input type="url" id="website" name="website"></input>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          defaultValue={info.website}
+        ></input>
       </div>
     </>
   );

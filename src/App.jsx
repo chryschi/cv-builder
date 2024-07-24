@@ -10,18 +10,18 @@ import SignatureCV from "./components/cv/SignatureCV";
 import SignatureForm from "./components/form/SignatureForm";
 import PersonalInfoForm from "./components/form/PersonalInfoForm";
 import "./components/cv/CVOwnDesign.css";
-import "./components/cv/CVOtherFont.css";
 import InterestsCV from "./components/cv/InterestsCV";
+import exampleInfo from "./components/exampleInfo";
 
 function App() {
-  const [personalInfo, setPersonalInfo] = useState({});
-  const [educationInfo, setEducationInfo] = useState([]);
-  const [projectsInfo, setProjectsInfo] = useState([]);
-  const [careerInfo, setCareerInfo] = useState([]);
-  const [skillInfo, setSkillInfo] = useState([]);
-  const [interestsInfo, setInterestsInfo] = useState([]);
+  const [personalInfo, setPersonalInfo] = useState(exampleInfo.personal);
+  const [educationInfo, setEducationInfo] = useState(exampleInfo.education);
+  const [projectsInfo, setProjectsInfo] = useState(exampleInfo.projects);
+  const [careerInfo, setCareerInfo] = useState(exampleInfo.career);
+  const [skillInfo, setSkillInfo] = useState(exampleInfo.skills);
+  const [interestsInfo, setInterestsInfo] = useState(exampleInfo.interests);
 
-  const [signatureInfo, setSignatureInfo] = useState({});
+  const [signatureInfo, setSignatureInfo] = useState(exampleInfo.signature);
   const [sectionVisibility, setSectionVisibility] = useState([
     true,
     true,
@@ -176,7 +176,7 @@ function App() {
                 title: "Persönliche Daten",
                 newPointText: "",
                 displayEntry: "",
-                component: <PersonalInfoForm />,
+                component: <PersonalInfoForm info={personalInfo} />,
                 componentId: "",
               }}
               singleInfo={true}
@@ -275,7 +275,7 @@ function App() {
                 title: "Unterschrift",
                 newPointText: "",
                 displayEntry: "",
-                component: <SignatureForm />,
+                component: <SignatureForm info={signatureInfo} />,
                 componentId: "",
               }}
               singleInfo={true}
@@ -287,10 +287,9 @@ function App() {
       <div className="cv-container">
         <article className="cv">
           <header>
-            <img className="photo"></img>
             <div className="title">
               <h1>{personalInfo.fullName}</h1>
-              <p>Lebenslauf</p>
+              <p className="cv-title">Lebenslauf</p>
             </div>
           </header>
           <div className="cv-main">

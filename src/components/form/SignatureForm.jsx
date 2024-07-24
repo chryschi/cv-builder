@@ -1,4 +1,6 @@
-const SignatureForm = () => {
+/* eslint-disable react/prop-types */
+
+const SignatureForm = ({ info }) => {
   return (
     <>
       <div>
@@ -7,7 +9,7 @@ const SignatureForm = () => {
           type="text"
           id="location"
           name="location"
-          defaultValue="Stockholm"
+          defaultValue={info.location}
         ></input>
       </div>
       <div>
@@ -16,7 +18,7 @@ const SignatureForm = () => {
           type="date"
           id="date"
           name="date"
-          defaultValue={"2000-01-19"}
+          defaultValue={info.date}
         ></input>
       </div>
     </>
