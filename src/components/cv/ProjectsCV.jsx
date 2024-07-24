@@ -8,7 +8,7 @@ const ProjectsCV = ({ info, visible }) => {
       {info.map((station, idx) => {
         if (station.visible === true) {
           return (
-            <div className="education-point" key={idx}>
+            <div className="project-point" key={idx}>
               <h3 className="project-title">{station.project}</h3>
 
               <div>

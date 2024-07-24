@@ -7,10 +7,10 @@
   padding: 10mm 10mm;
   transform: scale(0.8);
 
-  font-family: "Crimson Text", serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 11pt;
+  font-size: 10pt;
 
   overflow: hidden;
 }
@@ -59,11 +59,11 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 80%;
+  max-height: 100%;
   color: #3c595a;
 
   align-items: start;
-  gap: 8mm 10mm;
+  gap: 12mm 10mm;
 }
 
 .cv section {
@@ -87,7 +87,7 @@ section.left-col {
 
 .cv h1,
 .cv h3 {
-  font-family: "Unica One", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 36pt;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -95,7 +95,7 @@ section.left-col {
 }
 
 .cv h2 {
-  font-family: "Unica One", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -111,6 +111,7 @@ section.left-col {
 
 .cv h2 {
   text-transform: uppercase;
+  margin-bottom: 4mm;
 }
 /* Skills Section */
 
@@ -123,8 +124,9 @@ section.left-col {
 }
 
 .cv .education-point,
-.cv .career-point {
-  margin-bottom: 2mm;
+.cv .career-point,
+.cv .project-point {
+  margin-top: 4mm;
 }
 
 .material-symbols-outlined {

@@ -7,7 +7,7 @@ const exampleInfo = {
     birthday: "1991-03-21",
     adress: "Lilienweg 4, 88888 Musterstadt",
     phone: "+49333444555",
-    email: "emily.musterfrau@mustermail.com",
+    email: "emily.musterfrau@mail.com",
     website: "emilymusterfrau.com",
   },
   education: [
