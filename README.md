@@ -1,4 +1,4 @@
-# [CV-Builder](https://cv-builder-chryschi.netlify.app/)
+# [CV-Builder](https://cv-builder.abigailmajor.com)
 
 _(for a description in german see below)_
 
